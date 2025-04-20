@@ -17,11 +17,11 @@ return {
     -- Tema
     {
         {
-            "ellisonleao/gruvbox.nvim",
+            "uZer/pywal16.nvim",
             lazy = false,
             priority = 1000,
             config = function()
-                vim.cmd.colorscheme("gruvbox")
+                vim.cmd.colorscheme("pywal16")
             end,
         }
     },
@@ -62,12 +62,25 @@ return {
         end,
     },
 
+    -- Formatação
+    {
+        "prettier/vim-prettier",
+        config = function ()
+        end,
+    },
+
     -- Caixas de cor
     {
         "catgoose/nvim-colorizer.lua",
         opts = {
             filetypes = { "*" },
         },
+    },
+
+    -- Visual Multi Linhas
+    {
+        "mg979/vim-visual-multi",
+        branch = "master",
     }
 
 }

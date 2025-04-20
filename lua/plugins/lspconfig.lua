@@ -14,6 +14,9 @@ return {
             lspconfig.lua_ls.setup({ capabilities = capabilities })
             lspconfig.nixd.setup({ capabilities = capabilities })
             lspconfig.ts_ls.setup({ capabilities = capabilities })
+            lspconfig.docker_compose_language_service.setup({ capabilities = capabilities })
+            lspconfig.dockerls.setup({ capabilities = capabilities })
+
         end,
     }
 }
