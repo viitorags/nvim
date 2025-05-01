@@ -16,7 +16,7 @@ keymap("i", "<C-s>", "<C-o>:w<CR>", opts)
 keymap("n", "<A-b>", "<Cmd>Neotree toggle<CR>", opts)
 
 -- Telescope maps
-keymap("n", "<Leader>f", ":Telescope find_files<CR>", opts)
+keymap("n", "ff", ":Telescope find_files<CR>", opts)
 -- Mapeamento para trocar de Buffer
 for i = 1, 9 do
 	keymap("n", "<A-" .. i .. ">", function()
@@ -34,7 +34,7 @@ keymap("n", "<C-q>", ui.bufremove, { desc = "Delete Buffer" }, opts)
 keymap("n", "<Space>v", ":ToggleTerm<CR>", opts)
 
 -- Mapeamento para abrir o Lazygit
-function _lazygit_toggle()
+function Lazygit_toggle()
 	local term = require("toggleterm.terminal").Terminal
 	local lazygit = term:new({
 		cmd = "lazygit",
@@ -44,4 +44,4 @@ function _lazygit_toggle()
 	lazygit:toggle()
 end
 
-keymap("n", "<Space>g", ":lua _lazygit_toggle()<CR>", opts)
+keymap("n", "<Space>g", ":lua Lazygit_toggle()<CR>", opts)

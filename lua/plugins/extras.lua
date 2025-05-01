@@ -6,22 +6,6 @@ return {
 		opts = {},
 	},
 
-	-- Tema
-	{
-		{
-			--"folke/tokyonight.nvim",
-			"sainnhe/gruvbox-material",
-			lazy = false,
-			priority = 1000,
-			config = function()
-				vim.g.gruvbox_material_enable_italic = true
-				vim.g.gruvbox_material_background = "soft"
-				vim.g.gruvbox_material_foreground = "mix"
-				vim.cmd.colorscheme("gruvbox-material")
-			end,
-		},
-	},
-
 	-- Atalho de teclados
 	{
 		"folke/which-key.nvim",
@@ -33,31 +17,6 @@ return {
 		"akinsho/toggleterm.nvim",
 		version = "*",
 		config = true,
-	},
-
-	-- Indentação
-	{
-		"shellRaining/hlchunk.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			require("hlchunk").setup({
-				chunk = {
-					enable = true,
-				},
-
-				indent = {
-					enable = true,
-				},
-			})
-		end,
-	},
-
-	-- Auto emparelhamento tags html
-	{
-		"windwp/nvim-ts-autotag",
-		config = function()
-			require("nvim-ts-autotag").setup()
-		end,
 	},
 
 	-- Formatação
@@ -110,10 +69,5 @@ return {
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 		},
-	},
-
-	{
-		"nvim-tree/nvim-web-devicons",
-		opts = {},
 	},
 }

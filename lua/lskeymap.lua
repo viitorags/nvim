@@ -4,11 +4,11 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
 -- Mapeamento para abrir o LiveServer
-keymap("n", "<Space>ls", ":lua _live_server_toggle()<CR>", opts)
+keymap("n", "<Space>ls", ":lua Live_server_toggle()<CR>", opts)
 
 local live_server_pid = nil -- Armazena o processo do Live Server
 
-function _live_server_toggle()
+function Live_server_toggle()
 	local project_root = vim.fn.getcwd()
 	local current_file = vim.fn.expand("%:p")
 

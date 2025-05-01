@@ -1,6 +1,7 @@
 return {
 	{
 		"hrsh7th/nvim-cmp",
+		event = { "InsertEnter" },
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
@@ -8,8 +9,8 @@ return {
 			"hrsh7th/cmp-cmdline",
 			"saadparwaiz1/cmp_luasnip",
 			"onsails/lspkind.nvim",
-			-- Auto Completar
 			"L3MON4D3/LuaSnip",
+			"rafamadriz/friendly-snippets",
 		},
 		config = function()
 			-- require'nvim-cmp'.setup()
@@ -61,8 +62,8 @@ return {
 				},
 				-- Teclas para navegação e seleção
 				mapping = {
-					["<up>"] = cmp.mapping.select_prev_item(), -- Selecionar item anterior
-					["<down>"] = cmp.mapping.select_next_item(), -- Selecionar item seguinte
+					["<C-k>"] = cmp.mapping.select_prev_item(), -- Selecionar item anterior
+					["<C-j>"] = cmp.mapping.select_next_item(), -- Selecionar item seguinte
 					["<CR>"] = cmp.mapping.confirm({ select = true }), -- Confirmar seleção
 					["<C-e>"] = cmp.mapping.abort(), -- Fechar o menu de sugestões
 					["<Tab>"] = cmp.mapping(function(fallback)

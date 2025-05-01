@@ -1,8 +1,12 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		event = { "BufReadPre", "BufNewFile" },
 		build = ":TSUpdate", -- Garante que as linguagens serão atualizadas automaticamente
 		version = "*",
+		dependencies = {
+			"windwp/nvim-ts-autotag",
+		},
 		config = function()
 			local configs = require("nvim-treesitter.configs")
 			configs.setup({
@@ -29,6 +33,10 @@ return {
 				-- Habilita a indentação baseada em árvores de sintaxe
 				indent = {
 					enable = true, -- Ativa a indentação inteligente
+				},
+
+				autotag = {
+					enable = true,
 				},
 
 				-- Configuração de folding baseada em árvores de sintaxe

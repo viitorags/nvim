@@ -26,7 +26,7 @@ return {
 					},
 					file_sorter = require("telescope.sorters").get_fuzzy_file,
 
-					color_devicons = false,
+					color_devicons = true,
 					results_title = "",
 					prompt_title = "",
 					preview_title = "",
