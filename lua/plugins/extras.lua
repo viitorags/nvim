@@ -6,12 +6,6 @@ return {
 		opts = {},
 	},
 
-	-- Atalho de teclados
-	{
-		"folke/which-key.nvim",
-		opts = {},
-	},
-
 	-- Terminal Integrado
 	{
 		"akinsho/toggleterm.nvim",
@@ -33,41 +27,9 @@ return {
 		},
 	},
 
-	-- APIs REST TEST
-	{
-		"mistweaverco/kulala.nvim",
-		keys = {
-			{ "<Space>Rs", desc = "Send request" },
-			{ "<Space>Ra", desc = "Send all requests" },
-			{ "<Space>Rb", desc = "Open scratchpad" },
-		},
-		ft = { "http", "rest" },
-		opts = {
-			global_keymaps = true,
-		},
-	},
-
 	-- Visual Multi Linhas
 	{
 		"mg979/vim-visual-multi",
 		branch = "master",
-	},
-
-	-- Navegação no Terminal Kitty
-	{
-		"knubie/vim-kitty-navigator",
-		build = "cp ./*.py ~/.config/kitty/",
-	},
-
-	-- CMD LINE Stylized
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		opts = {
-			-- add any options here
-		},
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-		},
 	},
 }
