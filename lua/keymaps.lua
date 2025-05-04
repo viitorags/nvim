@@ -15,8 +15,6 @@ keymap("i", "<C-s>", "<C-o>:w<CR>", opts)
 -- Mapeamento para abrir e fechar explorador de arquivos
 keymap("n", "<A-b>", "<Cmd>Neotree toggle<CR>", opts)
 
--- Telescope maps
-keymap("n", "ff", ":Telescope find_files<CR>", opts)
 -- Mapeamento para trocar de Buffer
 for i = 1, 9 do
 	keymap("n", "<A-" .. i .. ">", function()

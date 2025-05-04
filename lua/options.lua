@@ -2,20 +2,21 @@ local options = {
 	clipboard = "unnamedplus",
 	mouse = "a",
 	expandtab = false,
-	shiftwidth = 4,
-	tabstop = 4,
+	shiftwidth = 2,
+	tabstop = 2,
 	cursorline = true,
 	number = true,
 	relativenumber = true,
-	numberwidth = 4,
+	numberwidth = 2,
 	termguicolors = true,
 	wrap = false,
 	smartindent = true,
 	showmatch = true,
 	completeopt = { "menuone", "noselect" },
-	foldmethod = "indent",
-	foldlevel = 99,
 	foldenable = true,
+	foldmethod = "expr",
+	foldexpr = "nvim_treesitter#foldexpr()",
+	foldlevel = 99,
 	signcolumn = "yes",
 	wildmenu = true,
 	wildmode = "longest:full,full",
@@ -32,13 +33,6 @@ local options = {
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
-
-vim.diagnostic.config({
-	virtual_text = false,
-	signs = true,
-	underline = true,
-	update_in_insert = false,
-})
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "nix" },

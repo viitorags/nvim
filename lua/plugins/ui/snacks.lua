@@ -4,9 +4,113 @@ return {
 	lazy = false,
 	---@type snacks.Config
 	opts = {
-		bigfile = { enabled = false },
-		dashboard = { enabled = false },
-		indent = { enabled = true },
+		dashboard = {
+			enabled = true,
+			preset = {
+				keys = {
+					{ icon = "󰈞 ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+					{
+						icon = " ",
+						key = "g",
+						desc = "Find Text",
+						action = ":lua Snacks.dashboard.pick('live_grep')",
+					},
+					{
+						icon = " ",
+						key = "r",
+						desc = "Recent Files",
+						action = ":lua Snacks.dashboard.pick('oldfiles')",
+					},
+					{
+						icon = " ",
+						key = "p",
+						desc = "Project Folder",
+						action = ":e $HOME/Workspace/Projetos/ | :cd %:p:h",
+					},
+					{ icon = " ", key = "s", desc = "Settings", action = ":e $MYVIMRC | :cd %:p:h" },
+					{
+						icon = "󰒲 ",
+						key = "L",
+						desc = "Lazy",
+						action = ":Lazy",
+						enabled = package.loaded.lazy ~= nil,
+					},
+					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+				},
+			},
+			sections = {
+				{ section = "header" },
+				{
+					pane = 2,
+					section = "terminal",
+					cmd = "colorscript -e crunch",
+					height = 5,
+					padding = 1,
+				},
+				{ section = "keys", gap = 1, padding = 1 },
+				{
+					pane = 2,
+					icon = " ",
+					desc = "Browse Repo",
+					padding = 1,
+					key = "b",
+					action = function()
+						Snacks.gitbrowse()
+					end,
+				},
+				function()
+					local in_git = Snacks.git.get_root() ~= nil
+					local cmds = {
+						{
+							title = "Notifications",
+							cmd = "gh-notify -s -a -n5",
+							action = function()
+								vim.ui.open("https://github.com/notifications")
+							end,
+							key = "n",
+							icon = " ",
+							height = 5,
+							enabled = true,
+						},
+					}
+					return vim.tbl_map(function(cmd)
+						return vim.tbl_extend("force", {
+							pane = 2,
+							section = "terminal",
+							enabled = in_git,
+							padding = 1,
+							ttl = 5 * 60,
+							indent = 3,
+						}, cmd)
+					end, cmds)
+				end,
+				{ pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+				{ pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+				{ section = "startup" },
+			},
+		},
+		indent = {
+			enabled = true,
+			char = "│",
+		},
+		statuscolumn = {
+			enabled = true,
+			left = { "mark", "sign" }, -- priority of signs on the left (high to low)
+			right = { "fold", "git" }, -- priority of signs on the right (high to low)
+			folds = {
+				open = true, -- show open fold icons
+				git_hl = false, -- use Git Signs hl for fold icons
+			},
+			git = {
+				-- patterns to match Git signs
+				patterns = { "GitSign", "MiniDiffSign" },
+			},
+			refresh = 50,
+		},
+		terminal = {
+			enabled = true,
+		},
 		input = { enabled = true },
 		explorer = {
 			enabled = true,
@@ -19,19 +123,35 @@ return {
 		},
 		picker = {
 			enabled = true,
+			ui_select = true,
 			sources = {
 				explorer = {
 					layout = {
 						layout = {
 							position = "right",
-							width = 35,
 						},
 					},
 				},
 			},
+			previewers = {
+				diff = {
+					builtin = true,
+					cmd = { "delta" },
+				},
+				git = {
+					builtin = true,
+					args = {},
+				},
+				file = {
+					max_size = 1024 * 1024,
+					max_line_length = 500,
+					ft = nil,
+				},
+				man_pager = nil,
+			},
 		},
 		image = {
-			enabled = true,
+			enabled = false,
 			formats = {
 				"png",
 				"jpg",
@@ -50,12 +170,14 @@ return {
 				"pdf",
 			},
 		},
-		notifier = { enabled = false },
+		notifier = { enabled = true },
 		quickfile = { enabled = false },
 		scope = { enabled = true },
 		scroll = { enabled = true },
-		statuscolumn = { enabled = true },
 		words = { enabled = false },
+		bigfile = { enabled = false },
+		git = { enabled = true },
+		gitbrowser = { enabled = true },
 		zen = {
 			enabled = true,
 			toggles = {
@@ -109,6 +231,14 @@ return {
 				b = {
 					completion = false, -- disable blink completions in input
 				},
+				blame_line = {
+					width = 0.6,
+					height = 0.6,
+					border = "rounded",
+					title = " Git Blame ",
+					title_pos = "center",
+					ft = "git",
+				},
 				keys = {
 					n_esc = { "<esc>", { "cmp_close", "cancel" }, mode = "n", expr = true },
 					i_esc = { "<esc>", { "cmp_close", "stopinsert" }, mode = "i", expr = true },
@@ -136,7 +266,7 @@ return {
 	keys = {
 		-- File Explorer
 		{
-			"<A-b>",
+			"<leader>e",
 			function()
 				Snacks.explorer()
 			end,
@@ -144,7 +274,7 @@ return {
 		},
 		-- Top Pickers & Explorer
 		{
-			"<C-f>",
+			"<leader>f",
 			function()
 				Snacks.picker.smart()
 			end,
