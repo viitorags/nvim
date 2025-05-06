@@ -12,8 +12,8 @@ keymap("v", "<C-c>", '"+y', opts)
 keymap("n", "<C-s>", ":w<CR>", opts)
 keymap("i", "<C-s>", "<C-o>:w<CR>", opts)
 
--- Mapeamento para abrir e fechar explorador de arquivos
-keymap("n", "<A-b>", "<Cmd>Neotree toggle<CR>", opts)
+-- Mapeamento para abrir o explorador de arquivos
+keymap("n", "<Space>e", ":Neotree toggle<CR>", opts)
 
 -- Mapeamento para trocar de Buffer
 for i = 1, 9 do

@@ -1,15 +1,15 @@
 return {
 	{
 		"nvim-lualine/lualine.nvim",
+		event = "BufReadPre",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			local lazy_status = require("lazy.status")
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
-					theme = "gruvbox-material",
 					component_separators = "",
-					section_separators = "",
+					section_separators = { left = "", right = "" },
 					globalstatus = true,
 					always_divide_middle = true,
 					always_show_tabline = true,
@@ -20,46 +20,56 @@ return {
 					},
 				},
 				sections = {
-					lualine_a = { { "mode", upper = true } }, -- Mostra o modo em caixa alta
-					lualine_b = { { "branch", icon = "" } }, -- Mostra o branch com ícone do Git
+					lualine_a = {
+						{ "mode" }, -- Deixa o texto em negrito para destacar
+					},
+					lualine_b = {
+						{ "branch", icon = "" },
+					},
 					lualine_c = {
 						{ "filetype", icons_enabled = true },
 						{
 							"filename",
 							path = 1,
 							symbols = { modified = " [+]", readonly = " [RO]" },
-						}, -- Caminho relativo com símbolos
+						},
 						{
 							"diagnostics",
 							sources = { "nvim_diagnostic" },
-							symbols = { error = " ", warn = " ", info = " ", hint = " " }, -- Ícones visuais para diagnósticos
-							colored = true, -- Ativa a colorização dos diagnósticos
-							update_in_insert = true, -- Atualiza em modo de inserção
-							always_visible = true, -- Sempre exibe diagnósticos
+							symbols = { error = " ", warn = " ", info = " ", hint = " " },
+							colored = true,
+							update_in_insert = true,
+							always_visible = true,
 						},
 					},
 					lualine_x = {
 						{
 							lazy_status.updates,
 							cond = lazy_status.has_updates,
-							color = { fg = "#fabd2f" }, -- cor amarela vibrante
-							icon = " ", -- ícone de pacote
+							color = { fg = "#fabd2f" },
+							icon = " ",
 							padding = { left = 1, right = 1 },
 						},
 					},
-					lualine_y = { "progress" }, -- Barra de progresso
-					lualine_z = { { "location", icon = "" } }, -- Localização com ícone
+					lualine_y = {
+						{ "progress", icon = "" },
+					},
+					lualine_z = {
+						{ "location", icon = "" },
+					},
 				},
 				inactive_sections = {
 					lualine_a = {},
 					lualine_b = {},
-					lualine_c = { { "filename", path = 0, symbols = { modified = " [+]", readonly = " [RO]" } } },
+					lualine_c = {
+						{ "filename", path = 0, symbols = { modified = " [+]", readonly = " [RO]" } },
+					},
 					lualine_x = {},
 					lualine_y = {},
 					lualine_z = { "location" },
 				},
 				tabline = {},
-				extensions = { "neo-tree", "quickfix" }, -- Extensões para integração com outros plugins
+				extensions = { "neo-tree", "quickfix" },
 			})
 		end,
 	},

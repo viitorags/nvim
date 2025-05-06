@@ -2,9 +2,8 @@ local ui = require("util.ui")
 
 return {
 	"akinsho/bufferline.nvim",
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-	},
+	event = "VimEnter",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {
 		options = {
 			numbers = "ordinal",
@@ -24,7 +23,7 @@ return {
 			diagnostics = "nvim_lsp",
 			offsets = {
 				{
-					filetype = "neo-tree",
+					filetype = "NvimTree",
 					text = "File Explorer",
 					separator = true,
 				},
@@ -35,7 +34,7 @@ return {
 			show_buffer_close_icons = true,
 			show_tab_indicators = true,
 			persist_buffer_sort = true,
-			separator_style = "solid",
+			separator_style = "thin",
 			enforce_regular_tabs = true,
 		},
 	},

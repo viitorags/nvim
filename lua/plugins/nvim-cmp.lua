@@ -11,6 +11,7 @@ return {
 			"onsails/lspkind.nvim",
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
 		},
 		config = function()
 			-- require'nvim-cmp'.setup()
@@ -62,10 +63,12 @@ return {
 				},
 				-- Teclas para navegação e seleção
 				mapping = {
-					["<C-k>"] = cmp.mapping.select_prev_item(), -- Selecionar item anterior
-					["<C-j>"] = cmp.mapping.select_next_item(), -- Selecionar item seguinte
-					["<CR>"] = cmp.mapping.confirm({ select = true }), -- Confirmar seleção
-					["<C-e>"] = cmp.mapping.abort(), -- Fechar o menu de sugestões
+					["<C-p>"] = cmp.mapping.select_prev_item(),
+					["<C-n>"] = cmp.mapping.select_next_item(),
+					["<CR>"] = cmp.mapping.confirm({ select = false }),
+					["<C-u>"] = cmp.mapping.scroll_docs(-4),
+					["<C-d>"] = cmp.mapping.scroll_docs(4),
+					["<C-e>"] = cmp.mapping.abort(),
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
@@ -86,6 +89,7 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "buffer" },
 					{ name = "luasnip" },
+					{ name = "nvim_lsp_signature_help" },
 					{ name = "treesitter" },
 					{ name = "path" },
 				},

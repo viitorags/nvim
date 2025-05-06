@@ -16,7 +16,7 @@ return {
 			html = { "prettier" },
 			css = { "prettier" },
 			sh = { "shfmt" },
-			nix = { "alejandra" },
+			nix = { "nixfmt" },
 		},
 	},
 }
