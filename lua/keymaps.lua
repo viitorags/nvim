@@ -17,12 +17,12 @@ keymap("i", "<C-s>", "<C-o>:w<CR>", opts)
 
 -- Mapeamento para trocar de Buffer
 for i = 1, 9 do
-	keymap("n", "<A-" .. i .. ">", function()
-		local buffers = vim.fn.getbufinfo({ buflisted = 1 })
-		if buffers[i] then
-			vim.cmd("buffer " .. buffers[i].bufnr)
-		end
-	end)
+    keymap("n", "<A-" .. i .. ">", function()
+        local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+        if buffers[i] then
+            vim.cmd("buffer " .. buffers[i].bufnr)
+        end
+    end)
 end
 
 -- Mapeamento para fechar buffer atual
@@ -33,13 +33,13 @@ keymap("n", "<Space>v", ":ToggleTerm<CR>", opts)
 
 -- Mapeamento para abrir o Lazygit
 function Lazygit_toggle()
-	local term = require("toggleterm.terminal").Terminal
-	local lazygit = term:new({
-		cmd = "lazygit",
-		hidden = true,
-		direction = "float",
-	})
-	lazygit:toggle()
+    local term = require("toggleterm.terminal").Terminal
+    local lazygit = term:new({
+        cmd = "lazygit",
+        hidden = true,
+        direction = "float",
+    })
+    lazygit:toggle()
 end
 
 keymap("n", "<Space>g", ":lua Lazygit_toggle()<CR>", opts)
