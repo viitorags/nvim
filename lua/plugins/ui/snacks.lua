@@ -6,6 +6,14 @@ return {
 		dashboard = {
 			enabled = true,
 			preset = {
+				header = [[
+     ██╗ ██████╗ ██╗   ██╗██████╗  ██████╗ ██╗   ██╗
+     ██║██╔═══██╗╚██╗ ██╔╝██╔══██╗██╔═══██╗╚██╗ ██╔╝
+     ██║██║   ██║ ╚████╔╝ ██████╔╝██║   ██║ ╚████╔╝ 
+██   ██║██║   ██║  ╚██╔╝  ██╔══██╗██║   ██║  ╚██╔╝  
+╚█████╔╝╚██████╔╝   ██║   ██████╔╝╚██████╔╝   ██║   
+ ╚════╝  ╚═════╝    ╚═╝   ╚═════╝  ╚═════╝    ╚═╝   
+				]],
 				keys = {
 					{ icon = "󰈞 ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
 					{ icon = " ", key = "e", desc = "New File", action = ":ene | startinsert" },
@@ -25,7 +33,7 @@ return {
 						icon = " ",
 						key = "p",
 						desc = "Project Folder",
-						action = ":e $HOME/Workspace/Projetos/ | :cd %:p:h",
+						action = ":e $HOME/Workspace/Projects/ | :cd %:p:h",
 					},
 					{ icon = " ", key = "s", desc = "Settings", action = ":e $MYVIMRC | :cd %:p:h" },
 					{
@@ -62,7 +70,7 @@ return {
 			right = { "fold", "git" }, -- priority of signs on the right (high to low)
 			folds = {
 				open = true, -- show open fold icons
-				git_hl = false, -- use Git Signs hl for fold icons
+				git_hl = true, -- use Git Signs hl for fold icons
 			},
 			git = {
 				-- patterns to match Git signs
@@ -71,13 +79,12 @@ return {
 			refresh = 50,
 		},
 		terminal = {
-			enabled = true,
+			enabled = false,
 		},
 		input = { enabled = true },
 		explorer = {
-			enabled = false,
+			enabled = true,
 			replace_netrw = true,
-			focus = "list",
 			tree = true,
 			follow_file = true,
 		},
@@ -86,9 +93,27 @@ return {
 			ui_select = true,
 			sources = {
 				explorer = {
+					replace_netrw = true,
+					tree = true,
+					follow_file = true,
+					focus = "list",
+					watch = true,
+					diagnostics = true,
+					diagnostics_open = false,
+					git_status = true,
+					git_status_open = false,
+					git_untracked = true,
 					layout = {
 						layout = {
 							position = "right",
+						},
+						preview = false,
+					},
+					win = {
+						list = {
+							keys = {
+								["."] = "tcd",
+							},
 						},
 					},
 				},
@@ -108,6 +133,72 @@ return {
 					ft = nil,
 				},
 				man_pager = nil,
+			},
+			icons = {
+				git = {
+					enabled = true, -- show git icons
+					commit = "󰜘 ", -- used by git log
+					staged = "●", -- staged changes. always overrides the type icons
+					added = "",
+					deleted = "",
+					ignored = " ",
+					modified = "○",
+					renamed = "",
+					unmerged = " ",
+					untracked = "?",
+				},
+				diagnostics = {
+					Error = " ",
+					Warn = " ",
+					Hint = " ",
+					Info = " ",
+				},
+				lsp = {
+					unavailable = "",
+					enabled = " ",
+					disabled = " ",
+					attached = "󰖩 ",
+				},
+				kinds = {
+					Array = " ",
+					Boolean = "󰨙 ",
+					Class = " ",
+					Color = " ",
+					Control = " ",
+					Collapsed = " ",
+					Constant = "󰏿 ",
+					Constructor = " ",
+					Copilot = " ",
+					Enum = " ",
+					EnumMember = " ",
+					Event = " ",
+					Field = " ",
+					File = " ",
+					Folder = " ",
+					Function = "󰊕 ",
+					Interface = " ",
+					Key = " ",
+					Keyword = " ",
+					Method = "󰊕 ",
+					Module = " ",
+					Namespace = "󰦮 ",
+					Null = " ",
+					Number = "󰎠 ",
+					Object = " ",
+					Operator = " ",
+					Package = " ",
+					Property = " ",
+					Reference = " ",
+					Snippet = "󱄽 ",
+					String = " ",
+					Struct = "󰆼 ",
+					Text = " ",
+					TypeParameter = " ",
+					Unit = " ",
+					Unknown = " ",
+					Value = " ",
+					Variable = "󰀫 ",
+				},
 			},
 		},
 		image = {
@@ -217,13 +308,23 @@ return {
 	},
 	keys = {
 		-- File Explorer
-		--[[{
+		{
 			"<leader>e",
 			function()
-				Snacks.explorer()
+				local explorer_pickers = Snacks.picker.get({ source = "explorer" })
+				for _, v in pairs(explorer_pickers) do
+					if v:is_focused() then
+						v:close()
+					else
+						v:focus()
+					end
+				end
+				if #explorer_pickers == 0 then
+					Snacks.picker.explorer()
+				end
 			end,
 			desc = "Open Explorer",
-		},]]
+		},
 		-- Top Pickers & Explorer
 		{
 			"<leader>f",

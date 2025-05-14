@@ -23,8 +23,7 @@ return {
 			diagnostics = "nvim_lsp",
 			offsets = {
 				{
-					filetype = "NvimTree",
-					text = "File Explorer",
+					filetype = "snacks_layout_box",
 					separator = true,
 				},
 			},

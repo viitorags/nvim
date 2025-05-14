@@ -1,4 +1,5 @@
 return {
-	"windwp/nvim-autopairs",
-	opts = {},
+    "windwp/nvim-autopairs",
+    event = "BufReadPre",
+    opts = {},
 }

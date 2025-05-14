@@ -4,11 +4,11 @@ return {
 	build = "make",
 	keys = {
 		{ "<leader>cc", "<cmd>CodeSnap<cr>", mode = "x", desc = "Save selected code snapshot into clipboard" },
-		{ "<leader>cs", "<cmd>CodeSnapSave<cr>", mode = "x", desc = "Save selected code snapshot in ~/Imagens" },
+		{ "<leader>cs", "<cmd>CodeSnapSave<cr>", mode = "x", desc = "Save selected code snapshot in ~/Pictures" },
 	},
 	opts = {
-		save_path = "~/Imagens/CodeScreenshots",
+		save_path = "~/Pictures/Codescreenshots",
 		has_breadcrumbs = true,
-		bg_theme = "bamboo",
+		bg_theme = "grape",
 	},
 }

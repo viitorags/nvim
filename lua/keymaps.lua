@@ -13,7 +13,7 @@ keymap("n", "<C-s>", ":w<CR>", opts)
 keymap("i", "<C-s>", "<C-o>:w<CR>", opts)
 
 -- Mapeamento para abrir o explorador de arquivos
-keymap("n", "<Space>e", ":Neotree toggle<CR>", opts)
+--keymap("n", "<Space>e", ":Neotree toggle<CR>", opts)
 
 -- Mapeamento para trocar de Buffer
 for i = 1, 9 do
