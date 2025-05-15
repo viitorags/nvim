@@ -42,3 +42,8 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.bo.tabstop = 2
     end,
 })
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+    pattern = "*.ejs",
+    command = "set filetype=html",
+})

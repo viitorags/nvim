@@ -1,4 +1,3 @@
--- plugins/null-ls.lua
 return {
     "nvimtools/none-ls.nvim",
     dependencies = {
@@ -12,19 +11,22 @@ return {
                 -- Lua
                 null_ls.builtins.formatting.stylua,
 
-                -- JS / TS / JSON / HTML / CSS
+                -- Adicione suporte ao tipo de arquivo .ejs
                 null_ls.builtins.formatting.prettier.with({
+                    filetypes = { "html", "javascript", "typescript", "css", "json", "ejs" },
                     extra_args = {
+                        "--write",
                         "--tab-width",
                         "4",
                         "--use-tabs",
                         "false",
+                        "--plugin",
+                        "prettier-plugin-ejs",
                     },
                 }),
 
-                -- Nix
                 null_ls.builtins.formatting.nixfmt.with({
-                    command = "nixfmt-rfc-style",
+                    command = "nixfmt",
                 }),
             },
 
@@ -37,7 +39,7 @@ return {
                             vim.lsp.buf.format({ bufnr = bufnr })
 
                             -- Substitui tabs por 4 espaços
-                            local view = vim.fn.winsaveview() -- mantém posição do cursor
+                            local view = vim.fn.winsaveview()
                             vim.cmd([[%s/\t/    /ge]])
                             vim.fn.winrestview(view)
                         end,

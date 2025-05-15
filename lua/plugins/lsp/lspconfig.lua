@@ -8,7 +8,10 @@ return {
             lspconfig.clangd.setup({ capabilities = capabilities })
             lspconfig.cmake.setup({ capabilities = capabilities })
             lspconfig.pyright.setup({ capabilities = capabilities })
-            lspconfig.html.setup({ capabilities = capabilities })
+            lspconfig.html.setup({
+                filetypes = { "html", "ejs" },
+                capabilities = capabilities,
+            })
             lspconfig.cssls.setup({ capabilities = capabilities })
             lspconfig.emmet_ls.setup({ capabilities = capabilities })
             lspconfig.lua_ls.setup({
