@@ -122,9 +122,9 @@ function M.statuscolumn()
             if vim.fn.foldclosed(vim.v.lnum) >= 0 then
                 fold = { text = vim.opt.fillchars:get().foldclose or "", texthl = githl or "Folded" }
             elseif
-                    show_open_folds
-                    and not LazyVim.ui.skip_foldexpr[buf]
-                    and tostring(vim.treesitter.foldexpr(vim.v.lnum)):sub(1, 1) == ">"
+                show_open_folds
+                and not LazyVim.ui.skip_foldexpr[buf]
+                and tostring(vim.treesitter.foldexpr(vim.v.lnum)):sub(1, 1) == ">"
             then -- fold start
                 fold = { text = vim.opt.fillchars:get().foldopen or "", texthl = githl }
             end
@@ -172,7 +172,7 @@ function M.color(name, bg)
     ---@type {foreground?:number}?
     ---@diagnostic disable-next-line: deprecated
     local hl = vim.api.nvim_get_hl and vim.api.nvim_get_hl(0, { name = name, link = false })
-            or vim.api.nvim_get_hl_by_name(name, true)
+        or vim.api.nvim_get_hl_by_name(name, true)
     ---@diagnostic disable-next-line: undefined-field
     ---@type string?
     local color = nil

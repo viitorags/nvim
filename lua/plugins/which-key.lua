@@ -1,6 +1,6 @@
 return {
-	"folke/which-key.nvim",
-	lazy = false,
-	opts = {},
-	keys = {},
+    "folke/which-key.nvim",
+    lazy = false,
+    opts = {},
+    keys = {},
 }
