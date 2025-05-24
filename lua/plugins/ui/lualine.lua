@@ -1,7 +1,7 @@
 return {
     {
         "nvim-lualine/lualine.nvim",
-        event = "BufReadPre",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             local lazy_status = require("lazy.status")
@@ -9,7 +9,7 @@ return {
                 options = {
                     icons_enabled = true,
                     component_separators = "",
-                    section_separators = { left = "", right = "" },
+                    section_separators = { left = "", right = "" },
                     globalstatus = true,
                     always_divide_middle = true,
                     always_show_tabline = true,
@@ -21,7 +21,14 @@ return {
                 },
                 sections = {
                     lualine_a = {
-                        { "mode" }, -- Deixa o texto em negrito para destacar
+                        {
+                            "mode",
+                            icon = " ",
+                            padding = {
+                                left = 1,
+                                right = 1,
+                            },
+                        },
                     },
                     lualine_b = {
                         { "branch", icon = "" },

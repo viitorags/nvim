@@ -24,13 +24,11 @@ return {
             },
         })
 
-        -- Cria um autocomando que roda o formatter + substituição de tabs
         vim.api.nvim_create_autocmd("BufWritePre", {
             callback = function(args)
                 -- Formata com conform
                 require("conform").format({ bufnr = args.buf })
 
-                -- Substitui tabs por 4 espaços (preserva posição do cursor)
                 local view = vim.fn.winsaveview()
                 vim.cmd([[%s/\t/    /ge]])
                 vim.fn.winrestview(view)

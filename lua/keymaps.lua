@@ -12,8 +12,12 @@ keymap("v", "<C-c>", '"+y', opts)
 keymap("n", "<C-s>", ":w<CR>", opts)
 keymap("i", "<C-s>", "<C-o>:w<CR>", opts)
 
--- Mapeamento para abrir o explorador de arquivos
---keymap("n", "<Space>e", ":Neotree toggle<CR>", opts)
+-- Mapeamento para pesquisa e substituição
+keymap("n", "<C-f>", ":%s/foo/bar", opts)
+keymap("v", "<C-f>", ":s/foo/bar", opts)
+
+-- Mapeamento para o CodeCompanion
+keymap("n", "<Space>a", ":CodeCompanionChat Toggle<CR>", opts)
 
 -- Mapeamento para trocar de Buffer
 for i = 1, 9 do
@@ -30,6 +34,9 @@ keymap("n", "<C-q>", ui.bufremove, { desc = "Delete Buffer" }, opts)
 
 -- Mapeamento para abrir o Terminal
 keymap("n", "<Space>v", ":ToggleTerm<CR>", opts)
+
+-- Mapeamento para abrir o templ select
+keymap("n", "<C-p>", ":CreateProjectSelect<CR>", opts)
 
 -- Mapeamento para abrir o Lazygit
 function Lazygit_toggle()

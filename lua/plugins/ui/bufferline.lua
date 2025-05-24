@@ -11,7 +11,7 @@ return {
             right_mouse_command = ui.bufremove,
             indicator = {
                 style = "icon",
-                icon = "▎",
+                icon = "",
             },
             modified_icon = "●",
             close_close_icon = "",
@@ -33,7 +33,7 @@ return {
             show_buffer_close_icons = true,
             show_tab_indicators = true,
             persist_buffer_sort = true,
-            separator_style = "thin",
+            separator_style = "slant",
             enforce_regular_tabs = true,
         },
     },

@@ -2,6 +2,9 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
+    dependencies = {
+        "nvim-tree/nvim-web-devicons",
+    },
     opts = {
         dashboard = {
             enabled = true,
@@ -70,7 +73,7 @@ return {
             right = { "fold", "git" }, -- priority of signs on the right (high to low)
             folds = {
                 open = true, -- show open fold icons
-                git_hl = true, -- use Git Signs hl for fold icons
+                git_hl = false, -- use Git Signs hl for fold icons
             },
             git = {
                 -- patterns to match Git signs

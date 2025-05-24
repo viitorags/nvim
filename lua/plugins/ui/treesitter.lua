@@ -17,11 +17,14 @@ return {
                     "css",
                     "html",
                     "cpp",
+                    "c_sharp",
                     "javascript",
                     "java",
                     "nix",
                     "markdown",
                     "json",
+                    "yaml",
+                    "python",
                 },
 
                 highlight = {

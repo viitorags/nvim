@@ -12,11 +12,13 @@ return {
             "L3MON4D3/LuaSnip",
             "rafamadriz/friendly-snippets",
             "hrsh7th/cmp-nvim-lsp-signature-help",
+            "hrsh7th/cmp-emoji",
         },
         config = function()
             -- require'nvim-cmp'.setup()
             -- Configuração do nvim-cmp
             local cmp = require("cmp")
+            require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/snippets" })
             vim.api.nvim_set_hl(0, "CmpMenu", { bg = "none" })
 
             cmp.setup({
@@ -52,8 +54,10 @@ return {
                 formatting = {
                     fields = { "kind", "abbr", "menu" },
                     format = function(entry, vim_item)
-                        local kind =
-                            require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+                        local kind = require("lspkind").cmp_format({
+                            mode = "symbol_text",
+                            maxwidth = 50,
+                        })(entry, vim_item)
                         local strings = vim.split(kind.kind, "%s", { trimempty = true })
                         kind.kind = " " .. (strings[1] or "") .. " "
                         kind.menu = " " .. (strings[2] or "") .. " "
@@ -92,6 +96,9 @@ return {
                     { name = "nvim_lsp_signature_help" },
                     { name = "treesitter" },
                     { name = "path" },
+                    { name = "noice" },
+                    { name = "lazydev" },
+                    { name = "emoji" },
                 },
             })
         end,
