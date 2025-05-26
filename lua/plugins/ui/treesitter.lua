@@ -11,6 +11,9 @@ return {
         config = function()
             local configs = require("nvim-treesitter.configs")
             configs.setup({
+                sync_install = false,
+                ignore_install = {},
+                auto_install = true,
                 ensure_installed = {
                     "c",
                     "lua",
@@ -29,7 +32,7 @@ return {
 
                 highlight = {
                     enable = true,
-                    additional_vim_regex_highlighting = true,
+                    additional_vim_regex_highlighting = false,
                 },
 
                 indent = {
@@ -47,6 +50,7 @@ return {
                 playground = {
                     enable = false,
                 },
+                modules = {},
             })
         end,
     },

@@ -3,6 +3,10 @@ return {
     event = "VeryLazy",
     opts = {
         lsp = {
+            progress = {
+                enabled = false, -- Desativa exibição de progresso
+            },
+
             signature = {
                 enabled = false,
             },
