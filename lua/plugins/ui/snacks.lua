@@ -101,7 +101,7 @@ return {
                     follow_file = true,
                     focus = "list",
                     watch = true,
-                    diagnostics = true,
+                    diagnostics = false,
                     diagnostics_open = false,
                     git_status = true,
                     git_status_open = false,

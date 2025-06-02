@@ -18,12 +18,37 @@ vim.lsp.config("roslyn", {
         },
     },
 })
+vim.lsp.enable("roslyn")
 
 return {
     {
         "seblyng/roslyn.nvim",
         ft = "cs",
         opts = {
+            capabilities = {
+                textDocument = {
+                    _vs_onAutoInsert = { dynamicRegistration = false },
+                },
+            },
+            cmd = {
+                "Microsoft.CodeAnalysis.LanguageServer",
+                "--logLevel=Information",
+                "--extensionLogDirectory=" .. vim.fn.stdpath("cache") .. "/roslyn_logs",
+                "--stdio",
+            },
+            on_attach = function(client, bufnr)
+                print("Roslyn LSP attached!")
+                -- Outras configurações on_attach aqui
+            end,
+            settings = {
+                ["csharp|inlay_hints"] = {
+                    csharp_enable_inlay_hints_for_implicit_object_creation = true,
+                    csharp_enable_inlay_hints_for_implicit_variable_types = true,
+                },
+                ["csharp|code_lens"] = {
+                    dotnet_enable_references_code_lens = true,
+                },
+            },
             capabilities = {
                 textDocument = {
                     _vs_onAutoInsert = { dynamicRegistration = false },
