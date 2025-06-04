@@ -1,4 +1,5 @@
-require("options")
-require("keymaps")
-require("lskeymap")
+require("config.options")
+require("config.keymaps")
+require("config.lskeymap")
 require("config.lazy")
+vim.cmd.colorscheme("tokyonight")

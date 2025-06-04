@@ -13,7 +13,10 @@ return {
                 capabilities = capabilities,
             })
             lspconfig.cssls.setup({ capabilities = capabilities })
-            lspconfig.emmet_ls.setup({ capabilities = capabilities })
+            lspconfig.emmet_ls.setup({
+                capabilities = capabilities,
+                filetypes = { "html", "javascript" },
+            })
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
                 settings = {
@@ -37,6 +40,38 @@ return {
             lspconfig.ts_ls.setup({ capabilities = capabilities })
             lspconfig.docker_compose_language_service.setup({ capabilities = capabilities })
             lspconfig.dockerls.setup({ capabilities = capabilities })
+            lspconfig.marksman.setup({ capabilities = capabilities })
+            lspconfig.jsonls.setup({ capabilities = capabilities })
+        end,
+    },
+    {
+        "williamboman/mason.nvim",
+        build = ":MasonUpdate",
+        config = true,
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        config = function()
+            require("mason").setup()
+            require("mason-lspconfig").setup({
+                ensure_installed = {
+                    "clangd",
+                    "cmake",
+                    "pyright",
+                    "html",
+                    "cssls",
+                    "ts_ls",
+                    "jsonls",
+                    "marksman",
+                    "emmet_ls",
+                    "lua_ls",
+                    "bashls",
+                    "docker_compose_language_service",
+                    "dockerls",
+                },
+                automatic_installation = true,
+                automatic_enable = true,
+            })
         end,
     },
 }
