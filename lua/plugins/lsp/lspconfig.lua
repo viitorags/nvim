@@ -5,7 +5,11 @@ return {
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-            lspconfig.clangd.setup({ capabilities = capabilities })
+            lspconfig.clangd.setup({
+                cmd = { "clangd", "--compile-commands-dir=." },
+                root_dir = require("lspconfig.util").root_pattern("compile_commands.json", "CMakeLists.txt"),
+                capabilities = capabilities,
+            })
             lspconfig.cmake.setup({ capabilities = capabilities })
             lspconfig.pyright.setup({ capabilities = capabilities })
             lspconfig.html.setup({
@@ -47,7 +51,14 @@ return {
     {
         "williamboman/mason.nvim",
         build = ":MasonUpdate",
-        config = true,
+        config = function()
+            require("mason").setup({
+                registries = {
+                    "github:mason-org/mason-registry",
+                    "github:Crashdummyy/mason-registry",
+                },
+            })
+        end,
     },
     {
         "williamboman/mason-lspconfig.nvim",
@@ -55,7 +66,7 @@ return {
             require("mason").setup()
             require("mason-lspconfig").setup({
                 ensure_installed = {
-                    "clangd",
+                    -- "clangd",
                     "cmake",
                     "pyright",
                     "html",

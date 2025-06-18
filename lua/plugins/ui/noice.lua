@@ -2,6 +2,10 @@ return {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
+        routes = {
+            filter = { event = "" },
+            opts = { skip = true },
+        },
         lsp = {
             progress = {
                 enabled = false, -- Desativa exibição de progresso

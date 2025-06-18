@@ -18,7 +18,7 @@ return {
  ╚════╝  ╚═════╝    ╚═╝   ╚═════╝  ╚═════╝    ╚═╝   
                 ]],
                 keys = {
-                    { icon = "󰈞 ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+                    { icon = "󰈞 ", key = "f", desc = "Find File", action = ":lua Snacks.picker.smart()" },
                     { icon = " ", key = "e", desc = "New File", action = ":ene | startinsert" },
                     {
                         icon = " ",
@@ -53,19 +53,19 @@ return {
                 { section = "header" },
                 { section = "keys", gap = 1, padding = 1 },
                 { section = "startup" },
-                {
-                    section = "terminal",
-                    cmd = "pokemon-colorscripts -n zygarde --no-title -s; sleep .1",
-                    random = 10,
-                    pane = 2,
-                    indent = 4,
-                    height = 25,
-                },
+                -- {
+                --     section = "terminal",
+                --     cmd = "pokemon-colorscripts -n zygarde --no-title -s; sleep .1",
+                --     random = 10,
+                --     pane = 2,
+                --     indent = 4,
+                --     height = 25,
+                -- },
             },
         },
         indent = {
             enabled = true,
-            char = "│",
+            char = "┃",
         },
         statuscolumn = {
             enabled = true,
@@ -115,7 +115,38 @@ return {
                     win = {
                         list = {
                             keys = {
-                                ["."] = "tcd",
+                                ["o"] = function()
+                                    local line = vim.api.nvim_get_current_line()
+                                    local filename = line:match("%S+$") or line
+                                    local snacks_cwd = vim.fn.getcwd()
+                                    local full_path = vim.fn.fnamemodify(snacks_cwd .. "/" .. filename, ":p")
+                                    local is_dir = vim.fn.isdirectory(full_path) == 1
+                                    local target_dir = nil
+                                    if is_dir then
+                                        target_dir = full_path
+                                    else
+                                        target_dir = vim.fn.fnamemodify(full_path, ":h")
+                                    end
+                                    vim.fn.jobstart({ "wezterm", "start", "--cwd", target_dir }, { detach = true })
+                                end,
+
+                                ["O"] = function()
+                                    local line = vim.api.nvim_get_current_line()
+                                    local filename = line:match("%S+$") or line
+                                    local snacks_cwd = vim.fn.getcwd(0)
+                                    local full_path = vim.fn.fnamemodify(snacks_cwd .. "/" .. filename, ":p")
+                                    local is_dir = vim.fn.isdirectory(full_path) == 1
+                                    local target_dir = is_dir and full_path or vim.fn.fnamemodify(full_path, ":h")
+
+                                    vim.fn.jobstart({
+                                        "wezterm",
+                                        "start",
+                                        "-e",
+                                        "bash",
+                                        "-c",
+                                        "cd " .. target_dir .. " && yazi",
+                                    }, { detach = true })
+                                end,
                             },
                         },
                     },

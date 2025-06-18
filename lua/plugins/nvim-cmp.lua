@@ -1,5 +1,6 @@
 return {
     {
+        ---@diagnostic disable-next-line: assign-type-mismatch
         "hrsh7th/nvim-cmp",
         event = { "InsertEnter" },
         dependencies = {
@@ -15,24 +16,28 @@ return {
             "hrsh7th/cmp-emoji",
         },
         config = function()
-            -- require'nvim-cmp'.setup()
-            -- Configuração do nvim-cmp
             local cmp = require("cmp")
             require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/snippets" })
             vim.api.nvim_set_hl(0, "CmpMenu", { bg = "none" })
 
             cmp.setup({
                 view = {
-                    entries = { name = "custom", selection_order = "top_down" },
+                    entries = {
+                        name = "custom",
+                        selection_order = "top_down",
+                    },
                 },
 
-                completion = {
-                    completeopt = "menu,menuone,noinsert",
-                },
+                completeopt = "menu,menuone,noinsert",
 
                 performance = {
                     max_view_entries = 10,
                     debounce = 120,
+                    throttle = 60,
+                    fetching_timeout = 500,
+                    filtering_context_budget = 20,
+                    confirm_resolve_timeout = 80,
+                    async_budget = 1,
                 },
 
                 window = {
@@ -65,7 +70,6 @@ return {
                         return kind
                     end,
                 },
-                -- Teclas para navegação e seleção
                 mapping = {
                     ["<C-p>"] = cmp.mapping.select_prev_item(),
                     ["<C-n>"] = cmp.mapping.select_next_item(),
@@ -88,7 +92,6 @@ return {
                     --     end
                     -- end, { "i", "s" }),
                 },
-                -- Fontes de completamento (como LSP, buffer, etc.)
                 sources = {
                     { name = "nvim_lsp" },
                     { name = "buffer" },
