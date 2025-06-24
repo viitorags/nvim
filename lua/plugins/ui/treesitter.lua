@@ -28,6 +28,7 @@ return {
                     "json",
                     "yaml",
                     "python",
+                    "go",
                 },
 
                 highlight = {

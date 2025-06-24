@@ -22,6 +22,7 @@ return {
                     sh = { "shfmt" },
                     nix = { "nixfmt" },
                     ejs = { "prettier" },
+                    go = { "go fmt" },
                 },
             })
 
@@ -37,20 +38,20 @@ return {
             })
         end,
     },
-    {
-        "zapling/mason-conform.nvim",
-        dependencies = { "williamboman/mason.nvim" },
-        config = function()
-            require("mason-conform").setup({
-                ensure_installed = {
-                    "prettier",
-                    "black",
-                    "stylua",
-                    "shfmt",
-                    "clang-format",
-                    "cmake-format",
-                },
-            })
-        end,
-    },
+    -- {
+    --     "zapling/mason-conform.nvim",
+    --     dependencies = { "williamboman/mason.nvim" },
+    --     config = function()
+    --         require("mason-conform").setup({
+    --             ensure_installed = {
+    --                 "prettier",
+    --                 "black",
+    --                 "stylua",
+    --                 "shfmt",
+    --                 "clang-format",
+    --                 "cmake-format",
+    --             },
+    --         })
+    --     end,
+    -- },
 }

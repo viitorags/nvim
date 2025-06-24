@@ -39,6 +39,7 @@ return {
                     },
                 },
             })
+            lspconfig.gopls.setup({ capabilities = capabilities })
             lspconfig.nixd.setup({ capabilities = capabilities })
             lspconfig.bashls.setup({ capabilities = capabilities })
             lspconfig.ts_ls.setup({ capabilities = capabilities })
@@ -48,41 +49,41 @@ return {
             lspconfig.jsonls.setup({ capabilities = capabilities })
         end,
     },
-    {
-        "williamboman/mason.nvim",
-        build = ":MasonUpdate",
-        config = function()
-            require("mason").setup({
-                registries = {
-                    "github:mason-org/mason-registry",
-                    "github:Crashdummyy/mason-registry",
-                },
-            })
-        end,
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        config = function()
-            require("mason").setup()
-            require("mason-lspconfig").setup({
-                ensure_installed = {
-                    -- "clangd",
-                    "cmake",
-                    "pyright",
-                    "html",
-                    "cssls",
-                    "ts_ls",
-                    "jsonls",
-                    "marksman",
-                    "emmet_ls",
-                    "lua_ls",
-                    "bashls",
-                    "docker_compose_language_service",
-                    "dockerls",
-                },
-                automatic_installation = true,
-                automatic_enable = true,
-            })
-        end,
-    },
+    -- {
+    --     "williamboman/mason.nvim",
+    --     build = ":MasonUpdate",
+    --     config = function()
+    --         require("mason").setup({
+    --             registries = {
+    --                 "github:mason-org/mason-registry",
+    --                 "github:Crashdummyy/mason-registry",
+    --             },
+    --         })
+    --     end,
+    -- },
+    -- {
+    --     "williamboman/mason-lspconfig.nvim",
+    --     config = function()
+    --         require("mason").setup()
+    --         require("mason-lspconfig").setup({
+    --             ensure_installed = {
+    --                 -- "clangd",
+    --                 "cmake",
+    --                 "pyright",
+    --                 "html",
+    --                 "cssls",
+    --                 "ts_ls",
+    --                 "jsonls",
+    --                 "marksman",
+    --                 "emmet_ls",
+    --                 "lua_ls",
+    --                 "bashls",
+    --                 "docker_compose_language_service",
+    --                 "dockerls",
+    --             },
+    --             automatic_installation = true,
+    --             automatic_enable = true,
+    --         })
+    --     end,
+    -- },
 }

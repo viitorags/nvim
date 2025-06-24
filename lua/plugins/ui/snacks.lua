@@ -127,7 +127,7 @@ return {
                                     else
                                         target_dir = vim.fn.fnamemodify(full_path, ":h")
                                     end
-                                    vim.fn.jobstart({ "wezterm", "start", "--cwd", target_dir }, { detach = true })
+                                    vim.fn.jobstart({ "kitty", "--cwd", target_dir }, { detach = true })
                                 end,
 
                                 ["O"] = function()
@@ -139,8 +139,7 @@ return {
                                     local target_dir = is_dir and full_path or vim.fn.fnamemodify(full_path, ":h")
 
                                     vim.fn.jobstart({
-                                        "wezterm",
-                                        "start",
+                                        "kitty",
                                         "-e",
                                         "bash",
                                         "-c",
