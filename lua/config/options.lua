@@ -18,6 +18,7 @@ local options = {
     foldexpr = "nvim_treesitter#foldexpr()",
     foldlevel = 99,
     signcolumn = "yes",
+    fillchars = "eob: ",
     wildmenu = true,
     wildmode = "longest:full,full",
     backup = false,

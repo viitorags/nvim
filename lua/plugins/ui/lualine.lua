@@ -4,7 +4,6 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
-            local lazy_status = require("lazy.status")
             require("lualine").setup({
                 options = {
                     icons_enabled = true,
@@ -49,15 +48,7 @@ return {
                             always_visible = true,
                         },
                     },
-                    lualine_x = {
-                        {
-                            lazy_status.updates,
-                            cond = lazy_status.has_updates,
-                            color = { fg = "#fabd2f" },
-                            icon = " ",
-                            padding = { left = 1, right = 1 },
-                        },
-                    },
+                    lualine_x = {},
                     lualine_y = {
                         { "progress", icon = "" },
                     },

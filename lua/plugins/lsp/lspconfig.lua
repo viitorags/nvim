@@ -13,13 +13,13 @@ return {
             lspconfig.cmake.setup({ capabilities = capabilities })
             lspconfig.pyright.setup({ capabilities = capabilities })
             lspconfig.html.setup({
-                filetypes = { "html", "ejs" },
+                filetypes = { "html", "ejs", "markdown" },
                 capabilities = capabilities,
             })
             lspconfig.cssls.setup({ capabilities = capabilities })
             lspconfig.emmet_ls.setup({
                 capabilities = capabilities,
-                filetypes = { "html", "javascript" },
+                filetypes = { "html", "javascript", "markdown" },
             })
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,

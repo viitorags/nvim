@@ -6,84 +6,22 @@ return {
         "nvim-tree/nvim-web-devicons",
     },
     opts = {
-        dashboard = {
-            enabled = true,
-            preset = {
-                header = [[
-     ██╗ ██████╗ ██╗   ██╗██████╗  ██████╗ ██╗   ██╗
-     ██║██╔═══██╗╚██╗ ██╔╝██╔══██╗██╔═══██╗╚██╗ ██╔╝
-     ██║██║   ██║ ╚████╔╝ ██████╔╝██║   ██║ ╚████╔╝ 
-██   ██║██║   ██║  ╚██╔╝  ██╔══██╗██║   ██║  ╚██╔╝  
-╚█████╔╝╚██████╔╝   ██║   ██████╔╝╚██████╔╝   ██║   
- ╚════╝  ╚═════╝    ╚═╝   ╚═════╝  ╚═════╝    ╚═╝   
-                ]],
-                keys = {
-                    { icon = "󰈞 ", key = "f", desc = "Find File", action = ":lua Snacks.picker.smart()" },
-                    { icon = " ", key = "e", desc = "New File", action = ":ene | startinsert" },
-                    {
-                        icon = " ",
-                        key = "g",
-                        desc = "Find Text",
-                        action = ":lua Snacks.dashboard.pick('live_grep')",
-                    },
-                    {
-                        icon = " ",
-                        key = "r",
-                        desc = "Recent Files",
-                        action = ":lua Snacks.dashboard.pick('oldfiles')",
-                    },
-                    {
-                        icon = " ",
-                        key = "p",
-                        desc = "Project Folder",
-                        action = ":e $HOME/Workspace/Projects/ | :cd %:p:h",
-                    },
-                    { icon = " ", key = "s", desc = "Settings", action = ":e $MYVIMRC | :cd %:p:h" },
-                    {
-                        icon = "󰒲 ",
-                        key = "L",
-                        desc = "Lazy",
-                        action = ":Lazy",
-                        enabled = package.loaded.lazy ~= nil,
-                    },
-                    { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-                },
-            },
-            sections = {
-                { section = "header" },
-                { section = "keys", gap = 1, padding = 1 },
-                { section = "startup" },
-                -- {
-                --     section = "terminal",
-                --     cmd = "pokemon-colorscripts -n zygarde --no-title -s; sleep .1",
-                --     random = 10,
-                --     pane = 2,
-                --     indent = 4,
-                --     height = 25,
-                -- },
-            },
-        },
-        indent = {
-            enabled = true,
-            char = "┃",
-        },
+        dashboard = { enabled = false },
+        indent = { enabled = false },
         statuscolumn = {
             enabled = true,
-            left = { "mark", "sign" }, -- priority of signs on the left (high to low)
-            right = { "fold", "git" }, -- priority of signs on the right (high to low)
+            left = { "mark", "sign" },
+            right = { "fold", "git" },
             folds = {
-                open = true, -- show open fold icons
-                git_hl = false, -- use Git Signs hl for fold icons
+                open = true,
+                git_hl = true,
             },
             git = {
-                -- patterns to match Git signs
                 patterns = { "GitSign", "MiniDiffSign" },
             },
             refresh = 50,
         },
-        terminal = {
-            enabled = false,
-        },
+        terminal = { enabled = false },
         input = { enabled = true },
         explorer = {
             enabled = true,
@@ -112,161 +50,20 @@ return {
                         },
                         preview = false,
                     },
-                    win = {
-                        list = {
-                            keys = {
-                                ["o"] = function()
-                                    local line = vim.api.nvim_get_current_line()
-                                    local filename = line:match("%S+$") or line
-                                    local snacks_cwd = vim.fn.getcwd()
-                                    local full_path = vim.fn.fnamemodify(snacks_cwd .. "/" .. filename, ":p")
-                                    local is_dir = vim.fn.isdirectory(full_path) == 1
-                                    local target_dir = nil
-                                    if is_dir then
-                                        target_dir = full_path
-                                    else
-                                        target_dir = vim.fn.fnamemodify(full_path, ":h")
-                                    end
-                                    vim.fn.jobstart({ "kitty", "--cwd", target_dir }, { detach = true })
-                                end,
-
-                                ["O"] = function()
-                                    local line = vim.api.nvim_get_current_line()
-                                    local filename = line:match("%S+$") or line
-                                    local snacks_cwd = vim.fn.getcwd(0)
-                                    local full_path = vim.fn.fnamemodify(snacks_cwd .. "/" .. filename, ":p")
-                                    local is_dir = vim.fn.isdirectory(full_path) == 1
-                                    local target_dir = is_dir and full_path or vim.fn.fnamemodify(full_path, ":h")
-
-                                    vim.fn.jobstart({
-                                        "kitty",
-                                        "-e",
-                                        "bash",
-                                        "-c",
-                                        "cd " .. target_dir .. " && yazi",
-                                    }, { detach = true })
-                                end,
-                            },
-                        },
-                    },
-                },
-            },
-            previewers = {
-                diff = {
-                    builtin = true,
-                    cmd = { "delta" },
-                },
-                git = {
-                    builtin = true,
-                    args = {},
-                },
-                file = {
-                    max_size = 1024 * 1024,
-                    max_line_length = 500,
-                    ft = nil,
-                },
-                man_pager = nil,
-            },
-            icons = {
-                git = {
-                    enabled = true, -- show git icons
-                    commit = "󰜘 ", -- used by git log
-                    staged = "●", -- staged changes. always overrides the type icons
-                    added = "",
-                    deleted = "",
-                    ignored = " ",
-                    modified = "○",
-                    renamed = "",
-                    unmerged = " ",
-                    untracked = "?",
-                },
-                diagnostics = {
-                    Error = " ",
-                    Warn = " ",
-                    Hint = " ",
-                    Info = " ",
-                },
-                lsp = {
-                    unavailable = "",
-                    enabled = " ",
-                    disabled = " ",
-                    attached = "󰖩 ",
-                },
-                kinds = {
-                    Array = " ",
-                    Boolean = "󰨙 ",
-                    Class = " ",
-                    Color = " ",
-                    Control = " ",
-                    Collapsed = " ",
-                    Constant = "󰏿 ",
-                    Constructor = " ",
-                    Copilot = " ",
-                    Enum = " ",
-                    EnumMember = " ",
-                    Event = " ",
-                    Field = " ",
-                    File = " ",
-                    Folder = " ",
-                    Function = "󰊕 ",
-                    Interface = " ",
-                    Key = " ",
-                    Keyword = " ",
-                    Method = "󰊕 ",
-                    Module = " ",
-                    Namespace = "󰦮 ",
-                    Null = " ",
-                    Number = "󰎠 ",
-                    Object = " ",
-                    Operator = " ",
-                    Package = " ",
-                    Property = " ",
-                    Reference = " ",
-                    Snippet = "󱄽 ",
-                    String = " ",
-                    Struct = "󰆼 ",
-                    Text = " ",
-                    TypeParameter = " ",
-                    Unit = " ",
-                    Unknown = " ",
-                    Value = " ",
-                    Variable = "󰀫 ",
                 },
             },
         },
-        image = {
-            enabled = false,
-            formats = {
-                "png",
-                "jpg",
-                "jpeg",
-                "gif",
-                "bmp",
-                "webp",
-                "tiff",
-                "heic",
-                "avif",
-                "mp4",
-                "mov",
-                "avi",
-                "mkv",
-                "webm",
-                "pdf",
-            },
-        },
+        image = { enabled = false },
         notifier = { enabled = true },
         quickfile = { enabled = false },
         scope = { enabled = true },
-        scroll = { enabled = true },
+        scroll = { enabled = false },
         words = { enabled = false },
         bigfile = { enabled = false },
         git = { enabled = true },
         gitbrowser = { enabled = true },
-        zen = {
-            enabled = false,
-        },
+        zen = { enabled = false },
         styles = {
-
             input = {
                 backdrop = false,
                 position = "float",
@@ -286,7 +83,7 @@ return {
                     buftype = "prompt",
                 },
                 b = {
-                    completion = false, -- disable blink completions in input
+                    completion = false,
                 },
                 blame_line = {
                     width = 0.6,
@@ -307,8 +104,6 @@ return {
                     q = "cancel",
                 },
             },
-
-            lazygit = {},
 
             float = {
                 position = "float",
