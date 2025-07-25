@@ -29,6 +29,7 @@ return {
                     "yaml",
                     "python",
                     "go",
+                    "php",
                 },
 
                 highlight = {

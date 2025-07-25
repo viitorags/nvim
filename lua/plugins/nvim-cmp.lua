@@ -17,7 +17,7 @@ return {
         },
         config = function()
             local cmp = require("cmp")
-            require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/snippets" })
+            require("luasnip.loaders.from_vscode").lazy_load()
             vim.api.nvim_set_hl(0, "CmpMenu", { bg = "none" })
 
             cmp.setup({

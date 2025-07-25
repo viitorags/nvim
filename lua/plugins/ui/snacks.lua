@@ -7,10 +7,13 @@ return {
     },
     opts = {
         dashboard = { enabled = false },
-        indent = { enabled = false },
+        indent = {
+            enabled = true,
+        },
         statuscolumn = {
             enabled = true,
-            left = { "mark", "sign" },
+            left = { --[[ "mark", "sign" ]]
+            },
             right = { "fold", "git" },
             folds = {
                 open = true,

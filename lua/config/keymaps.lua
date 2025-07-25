@@ -15,9 +15,6 @@ map("v", "<C-f>", ":s/foo/bar", opts)
 map("n", "<Space>a", ":CodeCompanionChat Toggle<CR>", opts)
 map("n", "<Space>ca", ":CodeCompanionActions<CR>", opts)
 
-map("n", "<Space>f", ":Telescope find_files<CR>", opts)
-map("n", "<Space>b", ":Telescope buffers<CR>", opts)
-
 for i = 1, 9 do
     map("n", "<A-" .. i .. ">", function()
         local buffers = vim.fn.getbufinfo({ buflisted = 1 })

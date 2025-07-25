@@ -23,12 +23,17 @@ return {
                     nix = { "nixfmt" },
                     ejs = { "prettier" },
                     go = { "go fmt" },
+                    php = { "php -w" },
                 },
             })
 
             vim.api.nvim_create_autocmd("BufWritePre", {
                 callback = function(args)
-                    -- Formata com conform
+                    local name = vim.api.nvim_buf_get_name(args.buf)
+                    if name:match("Makefile$") then
+                        return
+                    end
+
                     require("conform").format({ bufnr = args.buf })
 
                     local view = vim.fn.winsaveview()
@@ -38,20 +43,4 @@ return {
             })
         end,
     },
-    -- {
-    --     "zapling/mason-conform.nvim",
-    --     dependencies = { "williamboman/mason.nvim" },
-    --     config = function()
-    --         require("mason-conform").setup({
-    --             ensure_installed = {
-    --                 "prettier",
-    --                 "black",
-    --                 "stylua",
-    --                 "shfmt",
-    --                 "clang-format",
-    --                 "cmake-format",
-    --             },
-    --         })
-    --     end,
-    -- },
 }

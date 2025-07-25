@@ -11,8 +11,6 @@ return {
             dashboard.section.header.val = {
                 "                                                    ",
                 "                                                    ",
-                "                                                    ",
-                "                                                    ",
                 "     ██╗ ██████╗ ██╗   ██╗██████╗  ██████╗ ██╗   ██╗",
                 "     ██║██╔═══██╗╚██╗ ██╔╝██╔══██╗██╔═══██╗╚██╗ ██╔╝",
                 "     ██║██║   ██║ ╚████╔╝ ██████╔╝██║   ██║ ╚████╔╝ ",
@@ -20,7 +18,7 @@ return {
                 "╚█████╔╝╚██████╔╝   ██║   ██████╔╝╚██████╔╝   ██║   ",
                 " ╚════╝  ╚═════╝    ╚═╝   ╚═════╝  ╚═════╝    ╚═╝   ",
             }
-            -- Highlights
+
             vim.api.nvim_set_hl(0, "AlphaButtons", { fg = "#8ec07c", bold = true })
             vim.api.nvim_set_hl(0, "AlphaShortcut", { fg = "#fabd2f", bold = true })
             vim.api.nvim_set_hl(0, "AlphaButtonIcon", { fg = "#d3869b", bold = true })
@@ -37,7 +35,7 @@ return {
 
             dashboard.section.buttons.val = {
                 colored_button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-                colored_button("f", "󰈞  > Find file", ":lua Snacks.dashboard.pick('live_grep')<CR>"),
+                colored_button("f", "󰈞  > Find file", ":lua Snacks.picker.smart()<CR>"),
                 colored_button("r", "  > Recent", ":lua Snacks.dashboard.pick('oldfiles')<CR>"),
                 colored_button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h<CR>"),
                 colored_button("p", "  > Folder projects", ":e $HOME/Workspace/Projects/ | :cd %:p:h<CR>"),
@@ -58,6 +56,8 @@ return {
                 "             Plugins loaded: " .. lazy_stats.loaded .. " / " .. lazy_stats.count,
             }
 
+            require("alpha").setup(dashboard.config)
+
             vim.api.nvim_create_autocmd("User", {
                 pattern = "AlphaReady",
                 desc = "disable tabline for alpha",
@@ -66,8 +66,6 @@ return {
                     vim.opt.laststatus = 0
                 end,
             })
-
-            require("alpha").setup(dashboard.config)
         end,
     },
 }

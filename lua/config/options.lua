@@ -19,6 +19,12 @@ local options = {
     foldlevel = 99,
     signcolumn = "yes",
     fillchars = "eob: ",
+    listchars = {
+        space = "•",
+        tab = "• ",
+        lead = "•",
+        trail = "•",
+    },
     wildmenu = true,
     wildmode = "longest:full,full",
     backup = false,
@@ -56,4 +62,13 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     pattern = "*.ejs",
     command = "set filetype=html",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "make",
+    callback = function()
+        vim.opt_local.expandtab = false
+        vim.opt_local.tabstop = 4
+        vim.opt_local.shiftwidth = 4
+    end,
 })
