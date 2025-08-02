@@ -28,7 +28,7 @@ return {
 
             file = {
                 ["docker-compose.yml"] = { glyph = "󰡨", hl = "MiniIconsRed" },
-                ["go.mod"] = { glyph = "", hl = "MiniIconsBlue" },
+                ["go.mod"] = { glyph = "", hl = "MiniIconsPurple" },
                 ["go.sum"] = { glyph = "", hl = "MiniIconsGreen" },
             },
 

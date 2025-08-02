@@ -28,7 +28,7 @@ return {
             lspconfig.cssls.setup({ capabilities = capabilities })
             lspconfig.emmet_ls.setup({
                 capabilities = capabilities,
-                filetypes = { "html", "javascript", "php", "markdown" },
+                filetypes = { "html", "javascript", "markdown" },
             })
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,

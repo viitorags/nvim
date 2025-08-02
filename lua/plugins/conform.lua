@@ -23,7 +23,7 @@ return {
                     nix = { "nixfmt" },
                     ejs = { "prettier" },
                     go = { "go fmt" },
-                    php = { "php -w" },
+                    php = { "phpcbf" },
                 },
             })
 
