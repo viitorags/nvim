@@ -26,18 +26,18 @@ end
 
 map("n", "<C-q>", ui.bufremove, { desc = "Delete Buffer" }, opts)
 
-map("n", "<Space>v", ":ToggleTerm<CR>", opts)
+-- map("n", "<Space>v", ":ToggleTerm<CR>", opts)
 
 map("n", "<C-p>", ":CreateProjectSelect<CR>", opts)
 
-function Lazygit_toggle()
-    local term = require("toggleterm.terminal").Terminal
-    local lazygit = term:new({
-        cmd = "lazygit",
-        hidden = true,
-        direction = "float",
-    })
-    lazygit:toggle()
-end
-
-map("n", "<Space>g", ":lua Lazygit_toggle()<CR>", opts)
+-- function Lazygit_toggle()
+--     local term = require("toggleterm.terminal").Terminal
+--     local lazygit = term:new({
+--         cmd = "lazygit",
+--         hidden = true,
+--         direction = "float",
+--     })
+--     lazygit:toggle()
+-- end
+--
+-- map("n", "<Space>g", ":lua Lazygit_toggle()<CR>", opts)

@@ -8,7 +8,29 @@ return {
     opts = {
         dashboard = { enabled = false },
         indent = {
+            priority = 1,
             enabled = true,
+            indent = {
+                char = "┊",
+                hl = {
+                    "SnacksIndent1",
+                    "SnacksIndent2",
+                    "SnacksIndent3",
+                    "SnacksIndent4",
+                    "SnacksIndent5",
+                    "SnacksIndent6",
+                    "SnacksIndent7",
+                    "SnacksIndent8",
+                },
+            },
+            scope = {
+                enabled = true,
+                priority = 200,
+                char = "┊",
+                underline = false,
+                only_current = false,
+                hl = "SnacksIndentScope", ---@type string|string[] hl group for scopes
+            },
         },
         statuscolumn = {
             enabled = true,
@@ -190,6 +212,20 @@ return {
                 Snacks.picker.notifications()
             end,
             desc = "Notification History",
+        },
+        {
+            "<leader>v",
+            function()
+                Snacks.terminal()
+            end,
+            desc = "Open terminal",
+        },
+        {
+            "<leader>g",
+            function()
+                Snacks.lazygit()
+            end,
+            desc = "Open lazygit in terminal",
         },
     },
 }

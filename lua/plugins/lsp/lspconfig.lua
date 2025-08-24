@@ -6,6 +6,7 @@ return {
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             lspconfig.clangd.setup({
+                filetypes = { "c", "cpp" },
                 cmd = { "clangd", "--compile-commands-dir=." },
                 root_dir = require("lspconfig.util").root_pattern("compile_commands.json", "CMakeLists.txt"),
                 capabilities = capabilities,
@@ -27,10 +28,11 @@ return {
             })
             lspconfig.cssls.setup({ capabilities = capabilities })
             lspconfig.emmet_ls.setup({
+                filetypes = { "html", "javascript", "markdown", "php" },
                 capabilities = capabilities,
-                filetypes = { "html", "javascript", "markdown" },
             })
             lspconfig.lua_ls.setup({
+                filetypes = { "lua" },
                 capabilities = capabilities,
                 settings = {
                     Lua = {
@@ -73,7 +75,7 @@ return {
                 capabilities = capabilities,
                 init_options = {
                     preferences = {
-                        includeInlayParameterNameHints = "all", -- mostra nomes dos parâmetros
+                        includeInlayParameterNameHints = "all",
                         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
                         includeInlayFunctionParameterTypeHints = true,
                         includeInlayVariableTypeHints = true,
