@@ -37,7 +37,7 @@ local lazyOptions = {
 }
 
 require('nixCatsUtils.lazyCat').setup(nixCats.pawsible { 'allPlugins', 'start', 'lazy.nvim' }, {
-  { import = 'lua.plugins' },
-  { import = 'lua.plugins.ui' },
-  { import = 'lua.plugins.lsp' },
+  { import = 'plugins' },
+  { import = 'plugins.ui' },
+  { import = 'plugins.lsp' },
 }, lazyOptions)
