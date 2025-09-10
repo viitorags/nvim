@@ -1,59 +1,60 @@
 return {
-    {
-        "nvim-treesitter/nvim-treesitter",
-        event = { "BufReadPre", "BufNewFile" },
-        build = ":TSUpdate",
-        version = "*",
-        dependencies = {
-            "windwp/nvim-ts-autotag",
-            "tree-sitter/tree-sitter-embedded-template",
-        },
-        config = function()
-            local configs = require("nvim-treesitter.configs")
-            configs.setup({
-                sync_install = false,
-                ignore_install = {},
-                auto_install = true,
-                ensure_installed = {
-                    "c",
-                    "lua",
-                    "css",
-                    "html",
-                    "cpp",
-                    "c_sharp",
-                    "javascript",
-                    "java",
-                    "nix",
-                    "markdown",
-                    "json",
-                    "yaml",
-                    "python",
-                    "go",
-                    "php",
-                },
-
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false,
-                },
-
-                indent = {
-                    enable = true,
-                },
-
-                autotag = {
-                    enable = true,
-                },
-
-                fold = {
-                    enable = true,
-                },
-
-                playground = {
-                    enable = false,
-                },
-                modules = {},
-            })
-        end,
+  {
+    'nvim-treesitter/nvim-treesitter',
+    event = { 'BufReadPre', 'BufNewFile' },
+    build = require('nixCatsUtils').lazyAdd ':TSUpdate',
+    version = '*',
+    dependencies = {
+      'windwp/nvim-ts-autotag',
+      'tree-sitter/tree-sitter-embedded-template',
     },
+    config = function()
+      local configs = require 'nvim-treesitter.configs'
+      configs.setup {
+        sync_install = false,
+        ignore_install = {},
+        auto_install = require('nixCatsUtils').lazyAdd(true, false),
+        ensure_installed = require('nixCatsUtils').lazyAdd {
+          'c',
+          'lua',
+          'css',
+          'html',
+          'cpp',
+          'javascript',
+          'rust',
+          'java',
+          'nix',
+          'markdown',
+          'json',
+          'yaml',
+          'python',
+          'go',
+          'php',
+          'vue',
+        },
+
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
+        },
+
+        indent = {
+          enable = true,
+        },
+
+        autotag = {
+          enable = true,
+        },
+
+        fold = {
+          enable = true,
+        },
+
+        playground = {
+          enable = false,
+        },
+        modules = {},
+      }
+    end,
+  },
 }

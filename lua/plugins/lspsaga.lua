@@ -1,5 +1,5 @@
 return {
-    "nvimdev/lspsaga.nvim",
-    event = "BufReadPre",
-    opts = {},
+  'nvimdev/lspsaga.nvim',
+  event = 'BufReadPre',
+  opts = {},
 }
