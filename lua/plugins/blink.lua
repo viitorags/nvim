@@ -1,7 +1,7 @@
 return {
   {
-    ---@diagnostic disable-next-line: assign-type-mismatch
     'saghen/blink.cmp',
+    version = '1.*',
     event = { 'InsertEnter' },
     dependencies = {
       'L3MON4D3/LuaSnip',
