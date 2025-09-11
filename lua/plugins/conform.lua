@@ -19,6 +19,7 @@ return {
           json = { 'prettier' },
           html = { 'prettier' },
           css = { 'prettier' },
+          vue = { 'prettier' },
           sh = { 'shfmt' },
           nix = { 'nixfmt' },
           ejs = { 'prettier' },

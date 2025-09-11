@@ -14,8 +14,8 @@ return {
         filetypes = { 'html', 'javascript', 'markdown', 'php' },
         capabilities = capabilities,
       }
-      lspconfig.vtsls.setup {}
-      lspconfig.volar.setup {}
+      lspconfig.vtsls.setup { capabilities = capabilities }
+      lspconfig.vue_ls.setup { capabilities = capabilities }
       lspconfig.intelephense.setup { capabilities = capabilities }
       lspconfig.gopls.setup {
         capabilities = capabilities,
