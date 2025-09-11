@@ -12,8 +12,8 @@ map('i', '<C-s>', '<C-o>:w<CR>', opts)
 map('n', '<C-f>', ':%s/foo/bar', opts)
 map('v', '<C-f>', ':s/foo/bar', opts)
 
-map('n', '<Space>a', ':CodeCompanionChat Toggle<CR>', opts)
-map('n', '<Space>ca', ':CodeCompanionActions<CR>', opts)
+map('n', '<leader>a', ':CodeCompanionChat Toggle<CR>', opts)
+map('n', '<leader>ca', ':CodeCompanionActions<CR>', opts)
 
 for i = 1, 9 do
   map('n', '<A-' .. i .. '>', function()
@@ -26,9 +26,7 @@ end
 
 map('n', '<C-q>', ui.bufremove, { desc = 'Delete Buffer' }, opts)
 
--- map("n", "<Space>v", ":ToggleTerm<CR>", opts)
-
-map('n', '<C-p>', ':CreateProjectSelect<CR>', opts)
+-- map("n", "<leader>v", ":ToggleTerm<CR>", opts)
 
 -- function Lazygit_toggle()
 --     local term = require("toggleterm.terminal").Terminal
@@ -40,4 +38,4 @@ map('n', '<C-p>', ':CreateProjectSelect<CR>', opts)
 --     lazygit:toggle()
 -- end
 --
--- map("n", "<Space>g", ":lua Lazygit_toggle()<CR>", opts)
+-- map("n", "<leader>g", ":lua Lazygit_toggle()<CR>", opts)

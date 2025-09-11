@@ -1,7 +1,7 @@
 return {
   {
     'zbirenbaum/copilot.lua',
-    lazy = false,
+    lazy = true,
     config = function()
       require('copilot').setup {
         suggestion = {
@@ -19,15 +19,17 @@ return {
     },
     opts = {
       adapters = {
-        copilot = function()
-          return require('codecompanion.adapters').extend('copilot', {
-            schema = {
-              model = {
-                default = 'claude-3.7-sonnet',
+        http = {
+          copilot = function()
+            return require('codecompanion.adapters').extend('copilot', {
+              schema = {
+                model = {
+                  default = 'claude-3.7-sonnet',
+                },
               },
-            },
-          })
-        end,
+            })
+          end,
+        },
       },
       opts = {
         language = 'pt-br',

@@ -8,7 +8,8 @@ return {
         options = {
           icons_enabled = true,
           component_separators = '',
-          section_separators = { left = '', right = '' },
+          -- section_separators = { left = '', right = '' },
+          section_separators = { left = '', right = '' },
           globalstatus = true,
           always_divide_middle = true,
           always_show_tabline = true,
@@ -30,30 +31,19 @@ return {
             },
           },
           lualine_b = {
-            { 'branch', icon = '' },
+            { 'branch', icon = '  branch:' },
+            { 'diff' },
           },
-          lualine_c = {
-            { 'filetype', icons_enabled = true },
-            {
-              'filename',
-              path = 1,
-              symbols = { modified = ' [+]', readonly = ' [RO]' },
-            },
-            {
-              'diagnostics',
-              sources = { 'nvim_diagnostic' },
-              symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
-              colored = true,
-              update_in_insert = true,
-              always_visible = true,
-            },
-          },
-          lualine_x = {},
+          lualine_c = { { 'lsp_status', icon = '  LSP:' } },
+          lualine_x = { {
+            'encoding',
+            icon = ' ',
+          } },
           lualine_y = {
-            { 'progress', icon = '' },
+            { 'progress', icon = ' ' },
           },
           lualine_z = {
-            { 'location', icon = '' },
+            { 'location', icon = ' ' },
           },
         },
         inactive_sections = {

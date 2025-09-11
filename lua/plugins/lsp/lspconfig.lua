@@ -3,7 +3,7 @@ return {
     'neovim/nvim-lspconfig',
     config = function()
       local lspconfig = require 'lspconfig'
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       lspconfig.clangd.setup {
         filetypes = { 'c', 'cpp' },
@@ -91,6 +91,7 @@ return {
       lspconfig.jsonls.setup { capabilities = capabilities }
       lspconfig.intelephense.setup { capabilities = capabilities }
       lspconfig.qmlls.setup { capabilities = capabilities }
+
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)
