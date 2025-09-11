@@ -9,7 +9,7 @@ return {
     },
     config = function()
       vim.api.nvim_set_hl(0, 'CmpMenu', { bg = 'none' })
-      local blink = require 'blink'
+      local blink = require 'blink-cmp'
       blink.setup {
         keymap = {
           preset = 'default',
