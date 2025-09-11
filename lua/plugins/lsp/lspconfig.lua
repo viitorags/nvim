@@ -5,6 +5,35 @@ return {
       local lspconfig = require 'lspconfig'
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
+      lspconfig.html.setup {
+        filetypes = { 'html', 'ejs', 'php' },
+        capabilities = capabilities,
+      }
+      lspconfig.cssls.setup { capabilities = capabilities }
+      lspconfig.emmet_ls.setup {
+        filetypes = { 'html', 'javascript', 'markdown', 'php' },
+        capabilities = capabilities,
+      }
+      lspconfig.vtsls.setup {}
+      lspconfig.volar.setup {}
+      lspconfig.intelephense.setup { capabilities = capabilities }
+      lspconfig.gopls.setup {
+        capabilities = capabilities,
+        settings = {
+          gopls = {
+            hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              compositeLiteralTypes = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+            },
+          },
+        },
+      }
+      lspconfig.cmake.setup { capabilities = capabilities }
       lspconfig.clangd.setup {
         filetypes = { 'c', 'cpp' },
         cmd = { 'clangd', '--compile-commands-dir=.' },
@@ -20,17 +49,7 @@ return {
           },
         },
       }
-      lspconfig.cmake.setup { capabilities = capabilities }
-      lspconfig.pyright.setup { capabilities = capabilities }
-      lspconfig.html.setup {
-        filetypes = { 'html', 'ejs', 'php' },
-        capabilities = capabilities,
-      }
-      lspconfig.cssls.setup { capabilities = capabilities }
-      lspconfig.emmet_ls.setup {
-        filetypes = { 'html', 'javascript', 'markdown', 'php' },
-        capabilities = capabilities,
-      }
+      lspconfig.nixd.setup { capabilities = capabilities }
       lspconfig.lua_ls.setup {
         filetypes = { 'lua' },
         capabilities = capabilities,
@@ -53,43 +72,10 @@ return {
           },
         },
       }
-      lspconfig.gopls.setup {
-        capabilities = capabilities,
-        settings = {
-          gopls = {
-            hints = {
-              assignVariableTypes = true,
-              compositeLiteralFields = true,
-              compositeLiteralTypes = true,
-              constantValues = true,
-              functionTypeParameters = true,
-              parameterNames = true,
-              rangeVariableTypes = true,
-            },
-          },
-        },
-      }
-      lspconfig.nixd.setup { capabilities = capabilities }
       lspconfig.bashls.setup { capabilities = capabilities }
-      lspconfig.ts_ls.setup {
-        capabilities = capabilities,
-        init_options = {
-          preferences = {
-            includeInlayParameterNameHints = 'all',
-            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-            includeInlayFunctionParameterTypeHints = true,
-            includeInlayVariableTypeHints = true,
-            includeInlayPropertyDeclarationTypeHints = true,
-            includeInlayFunctionLikeReturnTypeHints = true,
-            includeInlayEnumMemberValueHints = true,
-          },
-        },
-      }
-      lspconfig.docker_compose_language_service.setup { capabilities = capabilities }
-      lspconfig.dockerls.setup { capabilities = capabilities }
       lspconfig.marksman.setup { capabilities = capabilities }
       lspconfig.jsonls.setup { capabilities = capabilities }
-      lspconfig.intelephense.setup { capabilities = capabilities }
+      lspconfig.pyright.setup { capabilities = capabilities }
       lspconfig.qmlls.setup { capabilities = capabilities }
 
       vim.api.nvim_create_autocmd('LspAttach', {

@@ -47,6 +47,7 @@
           startupPlugins = with pkgs.vimPlugins; {
             general = [
               lazy-nvim
+              blink-cmp
               nvim-treesitter.withAllGrammars
             ];
           };
