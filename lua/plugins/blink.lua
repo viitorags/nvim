@@ -31,9 +31,8 @@ return {
             winhighlight = 'Normal:BlinkMenu,FloatBorder:BlinkMenu,CursorLine:Visual,Search:None',
             draw = {
               columns = {
-                'kind_icon',
-                'label',
-                'label_description',
+                { 'kind_icon', 'kind', gap = 1 },
+                { 'label', 'label_description' },
               },
             },
           },
