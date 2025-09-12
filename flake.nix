@@ -41,6 +41,7 @@
           lspsAndRuntimeDeps = with pkgs; {
             general = [
               stdenv.cc.cc
+              typescript
             ];
           };
 
@@ -48,6 +49,7 @@
             general = [
               lazy-nvim
               blink-cmp
+              blink-compat
               nvim-treesitter.withAllGrammars
             ];
           };

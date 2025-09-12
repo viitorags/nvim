@@ -1,5 +1,6 @@
 return {
   'b0o/incline.nvim',
+  dependencies = { 'lewis6991/gitsigns.nvim' },
   config = function()
     local devicons = require 'nvim-web-devicons'
     require('incline').setup {

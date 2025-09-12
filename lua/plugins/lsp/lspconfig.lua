@@ -14,8 +14,46 @@ return {
         filetypes = { 'html', 'javascript', 'markdown', 'php' },
         capabilities = capabilities,
       }
-      lspconfig.vtsls.setup { capabilities = capabilities }
-      lspconfig.vue_ls.setup { capabilities = capabilities }
+
+      local vue_language_server_path = vim.fs.dirname(vim.fn.exepath 'vue-language-server')
+        .. '/../lib/language-tools/packages/language-server/node_modules/@vue/typescript-plugin'
+      local vue_plugin = {
+        name = '@vue/typescript-plugin',
+        location = vue_language_server_path,
+        languages = { 'vue' },
+        configNamespace = 'typescript',
+      }
+      vim.lsp.config('vtsls', {
+        cmd = { 'vtsls', '--stdio' },
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+        root_markers = {
+          'tsconfig.json',
+          'package.json',
+          'jsconfig.json',
+          '.git',
+        },
+        settings = {
+          vtsls = {
+            tsserver = {
+              globalPlugins = { vue_plugin },
+            },
+          },
+        },
+      })
+
+      vim.lsp.config('vue_ls', {
+        cmd = { 'vue-language-server', '--stdio' },
+        filetypes = { 'vue' },
+        settings = {
+          typescript = {
+            globalPlugins = { vue_plugin },
+          },
+        },
+      })
+
+      vim.lsp.enable 'vtsls'
+      vim.lsp.enable 'vue_ls'
+
       lspconfig.intelephense.setup { capabilities = capabilities }
       lspconfig.gopls.setup {
         capabilities = capabilities,
