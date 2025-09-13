@@ -11,7 +11,6 @@ return {
       priority = 1,
       enabled = true,
       indent = {
-        char = '┊',
         hl = {
           'SnacksIndent1',
           'SnacksIndent2',
@@ -26,7 +25,6 @@ return {
       scope = {
         enabled = true,
         priority = 200,
-        char = '┊',
         underline = false,
         only_current = false,
         hl = 'SnacksIndentScope', ---@type string|string[] hl group for scopes
