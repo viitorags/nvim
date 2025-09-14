@@ -8,8 +8,8 @@ return {
         options = {
           icons_enabled = true,
           component_separators = '',
-          section_separators = { left = '', right = '' },
-          -- section_separators = { left = '', right = '' },
+          -- section_separators = { left = '', right = '' },
+          section_separators = { left = '', right = '' },
           globalstatus = true,
           always_divide_middle = true,
           always_show_tabline = true,
