@@ -6,7 +6,72 @@ return {
     'nvim-tree/nvim-web-devicons',
   },
   opts = {
-    dashboard = { enabled = false },
+    dashboard = {
+      enabled = true,
+      preset = {
+        header = [[
+     ██╗ ██████╗ ██╗   ██╗██████╗  ██████╗ ██╗   ██╗
+     ██║██╔═══██╗╚██╗ ██╔╝██╔══██╗██╔═══██╗╚██╗ ██╔╝
+     ██║██║   ██║ ╚████╔╝ ██████╔╝██║   ██║ ╚████╔╝ 
+██   ██║██║   ██║  ╚██╔╝  ██╔══██╗██║   ██║  ╚██╔╝  
+╚█████╔╝╚██████╔╝   ██║   ██████╔╝╚██████╔╝   ██║   
+ ╚════╝  ╚═════╝    ╚═╝   ╚═════╝  ╚═════╝    ╚═╝   
+                ]],
+        keys = {
+          { icon = '󰈞 ', key = 'f', desc = 'Find File', action = ':lua Snacks.picker.smart()' },
+          { icon = ' ', key = 'e', desc = 'New File', action = ':ene | startinsert' },
+          {
+            icon = ' ',
+            key = 'g',
+            desc = 'Find Text',
+            action = ":lua Snacks.dashboard.pick('live_grep')",
+          },
+          {
+            icon = ' ',
+            key = 'r',
+            desc = 'Recent Files',
+            action = ":lua Snacks.dashboard.pick('oldfiles')",
+          },
+          {
+            icon = ' ',
+            key = 'p',
+            desc = 'Project Folder',
+            action = ':e $HOME/Workspace/Projects/ | :cd %:p:h',
+          },
+          { icon = ' ', key = 's', desc = 'Settings', action = ':e $MYVIMRC | :cd %:p:h' },
+          {
+            icon = '󰒲 ',
+            key = 'L',
+            desc = 'Lazy',
+            action = ':Lazy',
+            enabled = package.loaded.lazy ~= nil,
+          },
+          { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
+        },
+      },
+      sections = {
+        { section = 'header' },
+        { section = 'keys', gap = 1, padding = 1 },
+        {
+          text = {
+            { "If You Don't Take Risks, You Can't Create a Future.", hl = 'Title' },
+            { '\n\t\t\t\t- Monkey D. Luffy', hl = 'WarningMsg' },
+          },
+          hl = 'SnacksIndent8',
+          align = 'center',
+          padding = 1,
+        },
+        { section = 'startup' },
+        {
+          section = 'terminal',
+          cmd = 'pokemon-colorscripts -n zygarde --no-title -s; sleep .1',
+          random = 10,
+          pane = 2,
+          indent = 4,
+          height = 25,
+        },
+      },
+    },
     indent = {
       priority = 1,
       enabled = true,
