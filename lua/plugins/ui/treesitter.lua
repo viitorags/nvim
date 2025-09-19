@@ -23,6 +23,7 @@ return {
           'javascript',
           'rust',
           'java',
+          'sql',
           'nix',
           'markdown',
           'json',
