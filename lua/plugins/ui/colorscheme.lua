@@ -4,12 +4,12 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.g.gruvbox_material_enable_italic = true
-      vim.g.gruvbox_material_enable_bold = true
+      vim.g.gruvbox_material_enable_italic = 1
+      vim.g.gruvbox_material_enable_bold = 1
       vim.g.gruvbox_material_foreground = 'mix'
       vim.g.gruvbox_material_better_performance = 1
-      vim.g.gruvbox_material_dim_inactive_windows = false
-      vim.g.gruvbox_material_float_style = 'none'
+      vim.g.gruvbox_material_float_style = 'bright'
+      vim.g.gruvbox_material_ui_contrast = 'high'
 
       local grpid = vim.api.nvim_create_augroup('custom_highlights_gruvboxmaterial', {})
       vim.api.nvim_create_autocmd('ColorScheme', {

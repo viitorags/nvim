@@ -111,6 +111,12 @@ return {
     picker = {
       enabled = true,
       ui_select = true,
+      layout = {
+        layout = {
+          preset = 'vscode',
+          backdrop = false,
+        },
+      },
       sources = {
         explorer = {
           replace_netrw = true,
@@ -124,8 +130,10 @@ return {
           git_status_open = false,
           git_untracked = true,
           layout = {
+            preset = 'sidebar',
             layout = {
               position = 'right',
+              box = 'vertical',
             },
             preview = false,
           },
