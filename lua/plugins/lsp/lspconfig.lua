@@ -73,6 +73,38 @@ return {
           },
         },
 
+        tailwindcss = {
+          capabilities = capabilities,
+          filetypes = {
+            'aspnetcorerazor',
+            'astro',
+            'django-html',
+            'htmldjango',
+            'ejs',
+            'gohtml',
+            'gohtmltmpl',
+            'handlebars',
+            'html',
+            'htmlangular',
+            'html-eex',
+            'markdown',
+            'php',
+            'razor',
+            'css',
+            'less',
+            'postcss',
+            'sass',
+            'scss',
+            'javascript',
+            'javascriptreact',
+            'typescript',
+            'typescriptreact',
+            'vue',
+            'svelte',
+            'templ',
+          },
+        },
+
         cmake = { capabilities = capabilities },
 
         clangd = {

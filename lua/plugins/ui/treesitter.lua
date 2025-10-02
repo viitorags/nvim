@@ -5,7 +5,6 @@ return {
     build = require('nixCatsUtils').lazyAdd ':TSUpdate',
     version = '*',
     dependencies = {
-      'windwp/nvim-ts-autotag',
       'tree-sitter/tree-sitter-embedded-template',
     },
     config = function()
@@ -40,10 +39,6 @@ return {
         },
 
         indent = {
-          enable = true,
-        },
-
-        autotag = {
           enable = true,
         },
 
