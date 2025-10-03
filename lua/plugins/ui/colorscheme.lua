@@ -25,7 +25,7 @@ return {
         end,
       })
 
-      vim.cmd.colorscheme 'gruvbox-material'
+      -- vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
   {
@@ -62,7 +62,7 @@ return {
           light = 'lotus',
         },
       }
-      -- vim.cmd.colorscheme 'kanagawa'
+      vim.cmd.colorscheme 'kanagawa'
     end,
   },
 }
