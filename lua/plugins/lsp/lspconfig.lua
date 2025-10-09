@@ -158,28 +158,6 @@ return {
         qmlls = { capabilities = capabilities },
       }
 
-      vim.api.nvim_create_autocmd('LspAttach', {
-        callback = function(args)
-          local client = vim.lsp.get_client_by_id(args.data.client_id)
-          if client and client.server_capabilities.inlayHintProvider then
-            vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
-          end
-        end,
-      })
-
-      vim.api.nvim_create_autocmd('ColorScheme', {
-        callback = function()
-          local function_hl = vim.api.nvim_get_hl(0, { name = 'Function' })
-          local cursorline_hl = vim.api.nvim_get_hl(0, { name = 'CursorLine' })
-
-          vim.api.nvim_set_hl(0, 'LspInlayHint', {
-            fg = function_hl.fg and string.format('#%06x', function_hl.fg) or nil,
-            bg = cursorline_hl.bg and string.format('#%06x', cursorline_hl.bg) or nil,
-            italic = true,
-          })
-        end,
-      })
-
       for server_name, config in pairs(lsp_servers) do
         local lsp_server = '' .. server_name
         vim.lsp.config(lsp_server, config)
