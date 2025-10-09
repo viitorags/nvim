@@ -12,7 +12,7 @@ return {
         transparent = true,
       }
 
-      vim.cmd.colorscheme 'fluoromachine'
+      -- vim.cmd.colorscheme 'fluoromachine'
     end,
   },
   {
@@ -41,7 +41,7 @@ return {
         end,
       })
 
-      -- vim.cmd.colorscheme 'gruvbox-material'
+      vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
   {
