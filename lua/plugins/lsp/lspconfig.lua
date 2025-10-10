@@ -4,7 +4,7 @@ return {
     build = require('nixCatsUtils').lazyAdd ':MasonUpdate',
     config = require('nixCatsUtils').lazyAdd(true, false),
   },
-  require('nixCatsUtils').lazyAdd {
+  {
     'williamboman/mason-lspconfig.nvim',
     dependencies = { 'williamboman/mason.nvim' },
     config = function()
