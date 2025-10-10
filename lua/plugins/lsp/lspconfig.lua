@@ -1,11 +1,49 @@
 return {
   {
+    'williamboman/mason.nvim',
+    build = require('nixCatsUtils').lazyAdd ':MasonUpdate',
+    config = require('nixCatsUtils').lazyAdd(true, false),
+  },
+  {
+    'williamboman/mason-lspconfig.nvim',
+    dependencies = { 'williamboman/mason.nvim' },
+    config = function()
+      require('mason-lspconfig').setup {
+        ensured_installed = require('nixCatsUtils').lazyAdd {
+          'cmake',
+          'pyright',
+          'html',
+          'cssls',
+          'emmet_ls',
+          'lua_ls',
+          'gopls',
+          'bashls',
+          'vtsls',
+          'vue_ls',
+          'dockerls',
+          'docker_compose_language_service',
+          'marksman',
+          -- "jsonls",
+          -- "intelephense",
+          'qmlls',
+        },
+        automatic_installation = require('nixCatsUtils').lazyAdd(true, false),
+      }
+    end,
+  },
+  {
     'neovim/nvim-lspconfig',
     config = function()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-      local vue_language_server_path = vim.fs.dirname(vim.fn.exepath 'vue-language-server')
-        .. '/../lib/language-tools/packages/language-server/node_modules/@vue/typescript-plugin'
+      local vue_language_server_path
+      if require('nixCatsUtils').lazyAdd(true, false) == true then
+        vue_language_server_path = vim.fs.dirname(vim.fn.exepath 'vue-language-server')
+          .. '/../lib/language-tools/packages/language-server/node_modules/@vue/typescript-plugin'
+      else
+        vue_language_server_path = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server'
+      end
+
       local vue_plugin = {
         name = '@vue/typescript-plugin',
         location = vue_language_server_path,

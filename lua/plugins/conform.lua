@@ -44,4 +44,18 @@ return {
       })
     end,
   },
+  {
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    opts = {
+      ensure_installed = require('nixCatsUtils').lazyAdd {
+        'prettier',
+        'stylua',
+        'black',
+        'shfmt',
+        'php-cs-fixer',
+      },
+      auto_update = false,
+      run_on_start = require('nixCatsUtils').lazyAdd(true, false),
+    },
+  },
 }
