@@ -19,7 +19,7 @@
       forEachSystem = utils.eachSystem nixpkgs.lib.platforms.all;
 
       extra_pkg_config = {
-        # allowUnfree = true;
+        allowUnfree = true;
       };
 
       dependencyOverlays = # (import ./overlays inputs) ++
