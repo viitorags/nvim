@@ -39,8 +39,16 @@ local lazyOptions = {
   },
 }
 
-require('nixCatsUtils.lazyCat').setup(nixCats.pawsible { 'allPlugins', 'start', 'lazy.nvim' }, {
-  { import = 'plugins' },
-  { import = 'plugins.ui' },
-  { import = 'plugins.lsp' },
-}, lazyOptions)
+if require('nixCatsUtils').isNixCats == true then
+  require('nixCatsUtils.lazyCat').setup(nixCats.pawsible { 'allPlugins', 'start', 'lazy.nvim' }, {
+    { import = 'plugins' },
+    { import = 'plugins.ui' },
+    { import = 'plugins.lsp.lspconfig' },
+  }, lazyOptions)
+else
+  require('nixCatsUtils.lazyCat').setup(nixCats.pawsible { 'allPlugins', 'start', 'lazy.nvim' }, {
+    { import = 'plugins' },
+    { import = 'plugins.ui' },
+    { import = 'plugins.lsp' },
+  }, lazyOptions)
+end
