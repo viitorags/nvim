@@ -42,6 +42,26 @@
             general = [
               stdenv.cc.cc
               typescript
+
+              # LSPs
+              vtsls
+              nodePackages.intelephense
+              nodePackages.vscode-langservers-extracted
+              nodePackages.eslint_d
+              nodePackages.dockerfile-language-server-nodejs
+              unstable.vue-language-server
+              tailwindcss-language-server
+              pyright
+              emmet-ls
+              bash-language-server
+              lua-language-server
+              clang-tools
+              gopls
+              # (texlive.combine {
+              #   inherit (texlive) scheme-medium latexmk;
+              # })
+              nixd
+              kdePackages.qtdeclarative
             ];
           };
 
