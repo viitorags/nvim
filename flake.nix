@@ -49,7 +49,7 @@
               nodePackages.vscode-langservers-extracted
               nodePackages.eslint_d
               nodePackages.dockerfile-language-server-nodejs
-              unstable.vue-language-server
+              vue-language-server
               tailwindcss-language-server
               pyright
               emmet-ls
