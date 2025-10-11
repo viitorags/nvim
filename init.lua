@@ -39,16 +39,16 @@ local lazyOptions = {
   },
 }
 
-if require('nixCatsUtils').isNixCats == true then
-  require('nixCatsUtils.lazyCat').setup(nixCats.pawsible { 'allPlugins', 'start', 'lazy.nvim' }, {
-    { import = 'plugins' },
-    { import = 'plugins.ui' },
-    { import = 'plugins.lsp.lspconfig' },
-  }, lazyOptions)
-else
-  require('nixCatsUtils.lazyCat').setup(nixCats.pawsible { 'allPlugins', 'start', 'lazy.nvim' }, {
-    { import = 'plugins' },
-    { import = 'plugins.ui' },
-    { import = 'plugins.lsp' },
-  }, lazyOptions)
+local lazySpecs = {
+  { import = 'plugins' },
+  { import = 'plugins.ui' },
+  { import = 'plugins.lsp.lspconfig' },
+}
+
+local nixCatsUtils = require 'nixCatsUtils'
+
+if not nixCatsUtils.isNixCats then
+  table.insert(lazySpecs, { import = 'plugins.lsp.mason' })
 end
+
+require('nixCatsUtils.lazyCat').setup(nixCats.pawsible { 'allPlugins', 'start', 'lazy.nvim' }, lazySpecs, lazyOptions)
