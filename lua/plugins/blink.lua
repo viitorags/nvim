@@ -19,6 +19,8 @@ return {
           },
           ['<Tab>'] = {},
           ['<S-Tab>'] = {},
+          ['<Down>'] = {},
+          ['<Up>'] = {},
         },
 
         appearance = {
