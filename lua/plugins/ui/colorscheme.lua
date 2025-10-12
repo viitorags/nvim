@@ -1,5 +1,13 @@
 return {
   {
+    'samharju/synthweave.nvim',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'synthweave'
+    end,
+  },
+  {
     'rebelot/kanagawa.nvim',
     priority = 1000,
     config = function()
@@ -33,7 +41,7 @@ return {
           light = 'lotus',
         },
       }
-      vim.cmd.colorscheme 'kanagawa'
+      -- vim.cmd.colorscheme 'kanagawa'
     end,
   },
 }
