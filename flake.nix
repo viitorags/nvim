@@ -52,6 +52,7 @@
               blink-compat
               nvim-treesitter.withAllGrammars
               nvim-treesitter-textobjects
+              gruvbox-material
             ];
           };
 
