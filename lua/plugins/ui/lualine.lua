@@ -8,6 +8,7 @@ return {
         options = {
           icons_enabled = true,
           component_separators = '',
+          section_separators = { left = ' ', right = ' ' },
           globalstatus = true,
           always_divide_middle = true,
           always_show_tabline = true,
@@ -22,6 +23,7 @@ return {
             {
               'mode',
               icon = ' ',
+              separator = { left = '', right = ' ' },
               padding = {
                 left = 1,
                 right = 1,
@@ -29,19 +31,32 @@ return {
             },
           },
           lualine_b = {
-            { 'branch', icon = '  branch:' },
+            { 'branch', icon = ' branch:' },
             { 'diff' },
+            { 'lsp_status', icon = ' LSP:' },
           },
-          lualine_c = { { 'lsp_status', icon = '  LSP:' } },
-          lualine_x = { {
-            'encoding',
-            icon = ' ',
-          } },
+          lualine_c = { --[[{ 'lsp_status', icon = '  LSP:' }]]
+          },
+          lualine_x = {
+            --[[{
+              'encoding',
+              icon = ' ',
+            },]]
+          },
           lualine_y = {
-            { 'progress', icon = ' ' },
+            {
+              'encoding',
+              icon = '',
+            },
+            { 'progress', icon = '' },
           },
           lualine_z = {
-            { 'location', icon = ' ' },
+            {
+              'location',
+              icon = '',
+              separator = { left = ' ', right = '' },
+              left_padding = 2,
+            },
           },
         },
         inactive_sections = {
