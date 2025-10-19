@@ -17,7 +17,7 @@ local function highlight_placeholders(bufnr)
   end
 
   for id, node, _ in query:iter_captures(root, bufnr, 0, -1) do
-    local name = query.captures[id] -- capture name
+    local name = query.captures[id]
     if name == 'string' or name == 'interpreted_string_literal' then
       local text = ts.get_node_text(node, bufnr)
       local start_row, start_col, end_row, end_col = node:range()
