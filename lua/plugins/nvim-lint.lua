@@ -12,7 +12,7 @@ return {
         bash = { 'shellcheck' },
         dockerfile = { 'hadolint' },
         go = { 'golangcilint' },
-        php = { 'phpcs' },
+        -- php = { 'phpcs' },
       }
 
       local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
