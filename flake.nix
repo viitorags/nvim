@@ -48,8 +48,6 @@
           startupPlugins = with pkgs.vimPlugins; {
             general = [
               lazy-nvim
-              blink-cmp
-              blink-compat
               nvim-treesitter.withAllGrammars
               nvim-treesitter-textobjects
               gruvbox-material

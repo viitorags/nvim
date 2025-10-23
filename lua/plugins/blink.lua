@@ -4,10 +4,13 @@ return {
     version = '1.*',
     event = { 'InsertEnter' },
     dependencies = {
-      'L3MON4D3/LuaSnip',
-      'rafamadriz/friendly-snippets',
+      {
+        'L3MON4D3/LuaSnip',
+        dependencies = { 'rafamadriz/friendly-snippets' },
+      },
     },
     config = function()
+      require('luasnip.loaders.from_vscode').lazy_load()
       vim.api.nvim_set_hl(0, 'CmpMenu', { bg = 'none' })
       local blink = require 'blink-cmp'
       blink.setup {
@@ -49,6 +52,18 @@ return {
             window = {
               border = 'rounded',
               winhighlight = 'Normal:BlinkMenu,FloatBorder:BlinkMenu,CursorLine:Visual,Search:None',
+            },
+          },
+        },
+
+        snippets = {
+          preset = 'luasnip',
+        },
+
+        sources = {
+          providers = {
+            snippets = {
+              opts = {},
             },
           },
         },
