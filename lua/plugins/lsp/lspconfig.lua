@@ -5,7 +5,7 @@ return {
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       local vue_language_server_path
-      if require('nixCatsUtils').lazyAdd(true, false) == true then
+      if require('nixCatsUtils').isNixCats == true then
         vue_language_server_path = vim.fs.dirname(vim.fn.exepath 'vue-language-server')
           .. '/../lib/language-tools/packages/language-server/node_modules/@vue/typescript-plugin'
       else
