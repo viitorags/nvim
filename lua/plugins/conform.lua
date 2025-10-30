@@ -28,20 +28,20 @@ return {
         },
       }
 
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        callback = function(args)
-          local name = vim.api.nvim_buf_get_name(args.buf)
-          if name:match 'Makefile$' then
-            return
-          end
-
-          require('conform').format { bufnr = args.buf }
-
-          local view = vim.fn.winsaveview()
-          vim.cmd [[%s/\t/    /ge]]
-          vim.fn.winrestview(view)
-        end,
-      })
+      -- vim.api.nvim_create_autocmd('BufWritePre', {
+      --   callback = function(args)
+      --     local name = vim.api.nvim_buf_get_name(args.buf)
+      --     if name:match 'Makefile$' then
+      --       return
+      --     end
+      --
+      --     require('conform').format { bufnr = args.buf }
+      --
+      --     local view = vim.fn.winsaveview()
+      --     vim.cmd [[%s/\t/    /ge]]
+      --     vim.fn.winrestview(view)
+      --   end,
+      -- })
     end,
   },
 }
