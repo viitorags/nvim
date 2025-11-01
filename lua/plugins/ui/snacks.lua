@@ -27,6 +27,20 @@ return {
             action = ":lua Snacks.dashboard.pick('live_grep')",
           },
           {
+            function()
+              if require('nixCatsUtils').isNixCats == true then
+                return {
+                  icon = ' ',
+                  key = 'c',
+                  desc = 'NixDots Folder',
+                  action = ':e $HOME/nixdots/ | :tcd %:p:h',
+                }
+              else
+                return {}
+              end
+            end,
+          },
+          {
             icon = ' ',
             key = 'r',
             desc = 'Recent Files',
@@ -36,9 +50,17 @@ return {
             icon = ' ',
             key = 'p',
             desc = 'Project Folder',
-            action = ':e $HOME/Workspace/Projects/ | :cd %:p:h',
+            action = ':e $HOME/Workspace/Projects/ | :tcd %:p:h',
           },
-          { icon = ' ', key = 's', desc = 'Settings', action = ':e $MYVIMRC | :cd %:p:h' },
+          {
+            function()
+              if require('nixCatsUtils').isNixCats == true then
+                return {}
+              else
+                return { icon = ' ', key = 's', desc = 'Settings', action = ':e $MYVIMRC | :tcd %:p:h' }
+              end
+            end,
+          },
           {
             icon = '󰒲 ',
             key = 'L',
