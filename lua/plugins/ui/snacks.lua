@@ -33,7 +33,7 @@ return {
                   icon = ' ',
                   key = 'c',
                   desc = 'NixDots Folder',
-                  action = ':e $HOME/nixdots/ | :tcd %:p:h',
+                  action = ':tcd $HOME/nixdots/ | :e .',
                 }
               else
                 return {}
@@ -50,7 +50,7 @@ return {
             icon = ' ',
             key = 'p',
             desc = 'Project Folder',
-            action = ':e $HOME/Workspace/Projects/ | :tcd %:p:h',
+            action = ':tcd $HOME/Workspace/Projects/ | :e .',
           },
           {
             function()
