@@ -11,7 +11,7 @@ return {
         sh = { 'shellcheck' },
         bash = { 'shellcheck' },
         dockerfile = { 'hadolint' },
-        go = { 'golangcilint' },
+        -- go = { 'golangcilint' },
         -- php = { 'phpcs' },
       }
 
