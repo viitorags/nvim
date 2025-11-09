@@ -105,11 +105,13 @@ return {
           lualine_a = {
             { 'filename', path = 0, symbols = { modified = ' [+]', readonly = ' [RO]' }, separator = { left = '', right = ' ' } },
           },
-          lualine_z = {
+          lualine_y = {
             {
               'diagnostics',
               symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
             },
+          },
+          lualine_z = {
             { gitsigns_diff },
             {
               'branch',
