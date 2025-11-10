@@ -140,6 +140,19 @@ return {
         },
       },
       sources = {
+        files = {
+          ignored = true,
+          exclude = {
+            '**/.DS_Store',
+            '**/node_modules/**',
+            '**/.vscode',
+          },
+          include = {
+            '.env',
+            'Dockerfile',
+            'docker-compose.yml',
+          },
+        },
         explorer = {
           replace_netrw = true,
           tree = true,
@@ -151,6 +164,18 @@ return {
           git_status = true,
           git_status_open = false,
           git_untracked = true,
+          exclude = {
+            '.DS_Store',
+            'node_modules',
+            '.vscode',
+            '.git',
+          },
+          include = {
+            '.env',
+            'Dockerfile',
+            'docker-compose.yml',
+            'tests/',
+          },
           layout = {
             preset = 'sidebar',
             layout = {
