@@ -43,12 +43,16 @@ local lazySpecs = {
   { import = 'plugins' },
   { import = 'plugins.ui' },
   { import = 'plugins.lsp.lspconfig' },
+  { import = 'plugins.lsp.typescript-tools' },
 }
 
 local nixCatsUtils = require 'nixCatsUtils'
 
 if not nixCatsUtils.isNixCats then
-  table.insert(lazySpecs, { import = 'plugins.lsp.mason' })
+  table.insert(lazySpecs, {
+    { import = 'plugins.lsp.mason' },
+    { import = 'plugins.lsp.typescript-tools' },
+  })
 end
 
 require('nixCatsUtils.lazyCat').setup(nixCats.pawsible { 'allPlugins', 'start', 'lazy.nvim' }, lazySpecs, lazyOptions)

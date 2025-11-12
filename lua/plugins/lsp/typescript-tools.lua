@@ -1,9 +1,9 @@
 return {
   'pmizio/typescript-tools.nvim',
-  enabled = true,
   dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
   opts = {
     settings = {
+      separate_diagnostic_server = false,
       jsx_close_tag = {
         enable = true,
         filetypes = { 'javascriptreact', 'typescriptreact' },
