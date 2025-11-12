@@ -32,23 +32,23 @@ return {
           capabilities = capabilities,
         },
 
-        vtsls = {
-          cmd = { 'vtsls', '--stdio' },
-          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-          root_markers = {
-            'tsconfig.json',
-            'package.json',
-            'jsconfig.json',
-            '.git',
-          },
-          settings = {
-            vtsls = {
-              tsserver = {
-                globalPlugins = { vue_plugin },
-              },
-            },
-          },
-        },
+        -- vtsls = {
+        --   cmd = { 'vtsls', '--stdio' },
+        --   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+        --   root_markers = {
+        --     'tsconfig.json',
+        --     'package.json',
+        --     'jsconfig.json',
+        --     '.git',
+        --   },
+        --   settings = {
+        --     vtsls = {
+        --       tsserver = {
+        --         globalPlugins = { vue_plugin },
+        --       },
+        --     },
+        --   },
+        -- },
 
         vue_ls = {
           cmd = { 'vue-language-server', '--stdio' },
