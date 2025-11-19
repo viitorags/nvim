@@ -6,7 +6,7 @@ return {
     config = function()
       vim.g.gruvbox_material_enable_italic = 1
       vim.g.gruvbox_material_enable_bold = 1
-      vim.g.gruvbox_material_foreground = 'material'
+      vim.g.gruvbox_material_foreground = 'mix'
       vim.g.gruvbox_material_background = 'soft'
       vim.g.gruvbox_material_better_performance = 1
       vim.g.gruvbox_material_float_style = 'bright'
@@ -26,7 +26,7 @@ return {
         end,
       })
 
-      vim.cmd.colorscheme 'gruvbox-material'
+      -- vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
   {
@@ -52,6 +52,11 @@ return {
                 bg_gutter = 'none',
               },
             },
+            dragon = {
+              ui = {
+                bg_gutter = 'none',
+              },
+            },
           },
         },
         overrides = function()
@@ -63,7 +68,7 @@ return {
           light = 'lotus',
         },
       }
-      -- vim.cmd.colorscheme 'kanagawa'
+      vim.cmd.colorscheme 'kanagawa'
     end,
   },
 }
