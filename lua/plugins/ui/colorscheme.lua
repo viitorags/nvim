@@ -4,10 +4,11 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
+      vim.g.gruvbox_material_transparent_background = 1
       vim.g.gruvbox_material_enable_italic = 1
       vim.g.gruvbox_material_enable_bold = 1
       vim.g.gruvbox_material_foreground = 'mix'
-      vim.g.gruvbox_material_background = 'soft'
+      vim.g.gruvbox_material_background = 'hard'
       vim.g.gruvbox_material_better_performance = 1
       vim.g.gruvbox_material_float_style = 'bright'
       vim.g.gruvbox_material_ui_contrast = 'high'
@@ -26,7 +27,7 @@ return {
         end,
       })
 
-      -- vim.cmd.colorscheme 'gruvbox-material'
+      vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
   {
@@ -41,20 +42,18 @@ return {
         keywordStyle = { italic = true },
         statementStyle = { bold = true },
         typeStyle = {},
-        transparent = false,
+        transparent = true,
         dimInactive = false,
         terminalColors = true,
         colors = {
           palette = {},
           theme = {
-            wave = {
+            all = {
               ui = {
                 bg_gutter = 'none',
-              },
-            },
-            dragon = {
-              ui = {
-                bg_gutter = 'none',
+                float = {
+                  bg = 'none',
+                },
               },
             },
           },
@@ -62,13 +61,13 @@ return {
         overrides = function()
           return {}
         end,
-        theme = 'wave',
+        theme = 'dragon',
         background = {
-          dark = 'wave',
+          dark = 'dragon',
           light = 'lotus',
         },
       }
-      vim.cmd.colorscheme 'kanagawa'
+      -- vim.cmd.colorscheme 'kanagawa-dragon'
     end,
   },
 }
