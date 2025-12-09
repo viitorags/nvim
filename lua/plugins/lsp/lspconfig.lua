@@ -162,6 +162,8 @@ return {
         pyright = { capabilities = capabilities },
 
         qmlls = { capabilities = capabilities },
+
+        jdtls = { capabilities = capabilities },
       }
 
       for server_name, config in pairs(lsp_servers) do

@@ -149,6 +149,8 @@ return {
           },
           include = {
             '.env',
+            '.direnv',
+            '.envrc',
             'Dockerfile',
             'docker-compose.yml',
           },
@@ -172,6 +174,8 @@ return {
           },
           include = {
             '.env',
+            '.direnv',
+            '.envrc',
             'Dockerfile',
             'docker-compose.yml',
             'tests/',
