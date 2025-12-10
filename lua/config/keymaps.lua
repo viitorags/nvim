@@ -14,6 +14,8 @@ map('v', '<C-f>', ':s/foo/bar', opts)
 
 map('n', '<leader>a', ':CodeCompanionChat Toggle<CR>', opts)
 map('n', '<leader>ca', ':CodeCompanionActions<CR>', opts)
+map('n', '<leader>t', ':OverseerRun<CR>', opts)
+map('n', '<leader>T', ':OverseerToggle<CR>', opts)
 
 for i = 1, 9 do
   map('n', '<A-' .. i .. '>', function()
@@ -24,7 +26,7 @@ for i = 1, 9 do
   end)
 end
 
-map('n', '<C-q>', ui.bufremove, { desc = 'Delete Buffer' }, opts)
+map('n', '<C-q>', ui.bufremove, opts)
 
 -- map("n", "<leader>v", ":ToggleTerm<CR>", opts)
 

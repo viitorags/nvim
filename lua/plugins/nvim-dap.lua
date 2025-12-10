@@ -4,7 +4,6 @@ return {
     config = function()
       local dap = require 'dap'
 
-      -- Configuração existente para .NET
       dap.adapters.coreclr = {
         type = 'executable',
         command = '/home/vitor/.nix-profile/bin/netcoredbg',
@@ -28,7 +27,6 @@ return {
         },
       }
 
-      -- Nova configuração para PHP com XDebug
       dap.adapters.php = {
         type = 'executable',
         command = 'node',
@@ -44,7 +42,7 @@ return {
           pathMappings = {
             ['/var/www/html'] = '${workspaceFolder}',
           },
-          -- Configuração do XDebug
+
           xdebugSettings = {
             max_children = 100,
             max_data = 1024,
