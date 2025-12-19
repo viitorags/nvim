@@ -44,18 +44,18 @@ return {
           settings = {
             vtsls = {
               tsserver = {
+                maxTsServerMemory = 1024,
+                experimental = {
+                  completion = {
+                    enableServerSideFuzzyMatch = false,
+                  },
+                },
+                watchOptions = {
+                  watchFile = 'useFsEvents',
+                  watchDirectory = 'useFsEvents',
+                },
                 globalPlugins = { vue_plugin },
               },
-            },
-          },
-        },
-
-        vue_ls = {
-          cmd = { 'vue-language-server', '--stdio' },
-          filetypes = { 'vue' },
-          settings = {
-            typescript = {
-              globalPlugins = { vue_plugin },
             },
           },
         },
@@ -80,35 +80,15 @@ return {
         },
 
         tailwindcss = {
-          capabilities = capabilities,
           filetypes = {
-            'aspnetcorerazor',
-            'astro',
-            'django-html',
-            'htmldjango',
-            'ejs',
-            'gohtml',
-            'gohtmltmpl',
-            'handlebars',
             'html',
-            'htmlangular',
-            'html-eex',
-            'markdown',
-            'php',
-            'razor',
             'css',
-            'less',
-            'postcss',
-            'sass',
             'scss',
-            'javascript',
             'javascriptreact',
-            'typescript',
             'typescriptreact',
             'vue',
-            'svelte',
-            'templ',
           },
+          root_dir = require('lspconfig').util.root_pattern('tailwind.config.js', 'tailwind.config.ts'),
         },
 
         cmake = { capabilities = capabilities },
