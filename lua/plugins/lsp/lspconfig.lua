@@ -62,25 +62,6 @@ return {
 
         intelephense = { capabilities = capabilities },
 
-        phpactor = {
-          capabilities = capabilities,
-          init_options = {
-            ['language_server_phpstan.enabled'] = false,
-            ['language_server_psalm.enabled'] = false,
-          },
-          handlers = {
-            ['textDocument/publishDiagnostics'] = function() end,
-            ['textDocument/hover'] = function() end,
-            ['textDocument/signatureHelp'] = function() end,
-            ['textDocument/definition'] = function() end,
-            ['textDocument/references'] = function() end,
-          },
-          on_attach = function(client, _)
-            client.server_capabilities.documentFormattingProvider = false
-            client.server_capabilities.documentRangeFormattingProvider = false
-          end,
-        },
-
         gopls = {
           capabilities = capabilities,
           settings = {
