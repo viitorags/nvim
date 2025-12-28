@@ -1,14 +1,16 @@
 return {
   'mistricky/codesnap.nvim',
   event = 'BufReadPre',
-  build = 'make',
   keys = {
-    { '<leader>cc', '<cmd>CodeSnap<cr>', mode = 'x', desc = 'Save selected code snapshot into clipboard' },
-    { '<leader>cs', '<cmd>CodeSnapSave<cr>', mode = 'x', desc = 'Save selected code snapshot in ~/Pictures' },
+    { '<leader>cc', '<cmd>CodeSnap<cr>', mode = 'x', desc = 'Copy code snapshot to clipboard' },
+    { '<leader>cs', '<cmd>CodeSnapSave<cr>', mode = 'x', desc = 'Save code snapshot to Pictures' },
   },
-  opts = {
-    save_path = '~/Pictures/Codescreenshots',
-    has_breadcrumbs = true,
-    bg_theme = 'grape',
-  },
+  config = function()
+    require('codesnap').setup {
+      save_path = vim.fn.expand '~/Pictures/Codescreenshots',
+      has_breadcrumbs = true,
+      code_theme = 'grape',
+      watermark = '',
+    }
+  end,
 }

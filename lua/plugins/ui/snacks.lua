@@ -74,14 +74,14 @@ return {
       sections = {
         { section = 'header' },
         { section = 'keys', gap = 1, padding = 1 },
-        {
-          text = {
-            { "If You Don't Take Risks, You Can't Create a Future.", hl = 'Title' },
-            { '\n\t\t\t\t- Monkey D. Luffy', hl = 'WarningMsg' },
-          },
-          align = 'center',
-          padding = 1,
-        },
+        -- {
+        --   text = {
+        --     { "If You Don't Take Risks, You Can't Create a Future.", hl = 'Title' },
+        --     { '\n\t\t\t\t- Monkey D. Luffy', hl = 'WarningMsg' },
+        --   },
+        --   align = 'center',
+        --   padding = 1,
+        -- },
         { section = 'startup' },
       },
     },

@@ -40,7 +40,7 @@ return {
         options = {
           icons_enabled = true,
           component_separators = '',
-          section_separators = { left = ' ', right = ' ' },
+          section_separators = { left = '', right = '' },
           globalstatus = true,
           always_divide_middle = true,
           always_show_tabline = true,
@@ -55,7 +55,7 @@ return {
             {
               'mode',
               icon = ' ',
-              separator = { left = '', right = ' ' },
+              separator = { left = '', right = '' },
               padding = {
                 left = 1,
                 right = 1,
@@ -86,7 +86,7 @@ return {
             {
               'location',
               icon = '',
-              separator = { left = ' ', right = '' },
+              separator = { left = '', right = '' },
               left_padding = 2,
             },
           },
@@ -116,7 +116,7 @@ return {
             {
               'branch',
               icon = ' branch:',
-              separator = { left = ' ', right = '' },
+              separator = { left = '', right = '' },
             },
           },
         },
