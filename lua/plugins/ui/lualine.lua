@@ -103,7 +103,7 @@ return {
         },
         tabline = {
           lualine_a = {
-            { 'filename', path = 0, symbols = { modified = ' [+]', readonly = ' [RO]' }, separator = { left = '', right = ' ' } },
+            { 'filename', path = 0, symbols = { modified = ' [+]', readonly = ' [RO]' }, separator = { left = '', right = '' } },
           },
           lualine_y = {
             {

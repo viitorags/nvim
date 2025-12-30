@@ -9,14 +9,6 @@ return {
     dashboard = {
       enabled = true,
       preset = {
-        header = [[
-     ██╗ ██████╗ ██╗   ██╗██████╗  ██████╗ ██╗   ██╗
-     ██║██╔═══██╗╚██╗ ██╔╝██╔══██╗██╔═══██╗╚██╗ ██╔╝
-     ██║██║   ██║ ╚████╔╝ ██████╔╝██║   ██║ ╚████╔╝ 
-██   ██║██║   ██║  ╚██╔╝  ██╔══██╗██║   ██║  ╚██╔╝  
-╚█████╔╝╚██████╔╝   ██║   ██████╔╝╚██████╔╝   ██║   
- ╚════╝  ╚═════╝    ╚═╝   ╚═════╝  ╚═════╝    ╚═╝   
-                ]],
         keys = {
           { icon = '󰈞 ', key = 'f', desc = 'Find File', action = ':lua Snacks.picker.smart()' },
           { icon = ' ', key = 'e', desc = 'New File', action = ':ene | startinsert' },
@@ -72,17 +64,41 @@ return {
         },
       },
       sections = {
-        { section = 'header' },
-        { section = 'keys', gap = 1, padding = 1 },
-        -- {
-        --   text = {
-        --     { "If You Don't Take Risks, You Can't Create a Future.", hl = 'Title' },
-        --     { '\n\t\t\t\t- Monkey D. Luffy', hl = 'WarningMsg' },
-        --   },
-        --   align = 'center',
-        --   padding = 1,
-        -- },
-        { section = 'startup' },
+        {
+          text = {
+            { '', hl = 'Title' },
+            { '\n\t\t\t\t', hl = 'WarningMsg' },
+          },
+          align = 'center',
+          padding = 1,
+        },
+        {
+          section = 'terminal',
+          cmd = 'chafa ~/nixdots/assets/wallpapers/wallhaven_zmmkkv.png --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1',
+          height = 17,
+          padding = 1,
+        },
+        {
+          pane = 2,
+          {
+            text = {
+              { '', hl = 'Title' },
+              { '\n\t\t\t\t', hl = 'WarningMsg' },
+            },
+            align = 'center',
+            padding = 1,
+          },
+          { section = 'keys', gap = 1, padding = 1 },
+          { section = 'startup' },
+        },
+        {
+          text = {
+            { "If You Don't Take Risks, You Can't Create a Future.", hl = 'Title' },
+            { '\n\t\t\t\t- Monkey D. Luffy', hl = 'WarningMsg' },
+          },
+          align = 'center',
+          padding = 1,
+        },
       },
     },
     indent = {
@@ -122,7 +138,7 @@ return {
       },
       refresh = 50,
     },
-    terminal = { enabled = false },
+    terminal = { enabled = true },
     input = { enabled = true },
     explorer = {
       enabled = true,
@@ -195,7 +211,7 @@ return {
     notifier = { enabled = true },
     quickfile = { enabled = false },
     scope = { enabled = true },
-    scroll = { enabled = false },
+    scroll = { enabled = true },
     words = { enabled = false },
     bigfile = { enabled = false },
     git = { enabled = true },
