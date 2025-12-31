@@ -65,39 +65,21 @@ return {
       },
       sections = {
         {
-          text = {
-            { '', hl = 'Title' },
-            { '\n\t\t\t\t', hl = 'WarningMsg' },
-          },
-          align = 'center',
-          padding = 1,
-        },
-        {
           section = 'terminal',
-          cmd = 'chafa ~/nixdots/assets/wallpapers/wallhaven_zmmkkv.png --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1',
-          height = 17,
-          padding = 1,
+          cmd = 'pokemon-colorscripts --name rayquaza -s --no-title',
+          pane = 1,
+          indent = 4,
+          height = 30,
         },
         {
           pane = 2,
           {
-            text = {
-              { '', hl = 'Title' },
-              { '\n\t\t\t\t', hl = 'WarningMsg' },
-            },
+            text = { '' },
             align = 'center',
-            padding = 1,
           },
+          { section = 'header', height = 20, gap = 2 },
           { section = 'keys', gap = 1, padding = 1 },
           { section = 'startup' },
-        },
-        {
-          text = {
-            { "If You Don't Take Risks, You Can't Create a Future.", hl = 'Title' },
-            { '\n\t\t\t\t- Monkey D. Luffy', hl = 'WarningMsg' },
-          },
-          align = 'center',
-          padding = 1,
         },
       },
     },
