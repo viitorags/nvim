@@ -43,7 +43,7 @@ return {
         end,
       })
 
-      vim.cmd.colorscheme 'gruvbox-material'
+      -- vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
   {
@@ -77,7 +77,7 @@ return {
           virtual_text = 'NONE',
         },
       }
-      -- vim.cmd.colorscheme 'vaporwave'
+      vim.cmd.colorscheme 'vaporwave'
     end,
   },
 }
