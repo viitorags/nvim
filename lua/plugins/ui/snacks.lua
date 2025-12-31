@@ -63,9 +63,16 @@ return {
           { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
         },
       },
+      -- formats = {
+      --   key = function(item)
+      --     return { { '[', hl = 'special' }, { item.key, hl = 'key' }, { ']', hl = 'special' } }
+      --   end,
+      -- },
       sections = {
         { section = 'header' },
-        { section = 'keys', gap = 1, padding = 1 },
+        -- { section = 'terminal', cmd = 'cowsay -t "JOYBOY"', hl = 'header', padding = 1, indent = 4 },
+        { title = 'Bookmarks', padding = 0 },
+        { section = 'keys', padding = 1 },
         { section = 'startup' },
       },
     },
