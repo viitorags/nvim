@@ -64,23 +64,9 @@ return {
         },
       },
       sections = {
-        {
-          section = 'terminal',
-          cmd = 'pokemon-colorscripts --name rayquaza -s --no-title',
-          pane = 1,
-          indent = 4,
-          height = 30,
-        },
-        {
-          pane = 2,
-          {
-            text = { '' },
-            align = 'center',
-          },
-          { section = 'header', height = 20, gap = 2 },
-          { section = 'keys', gap = 1, padding = 1 },
-          { section = 'startup' },
-        },
+        { section = 'header' },
+        { section = 'keys', gap = 1, padding = 1 },
+        { section = 'startup' },
       },
     },
     indent = {
