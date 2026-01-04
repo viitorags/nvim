@@ -1,5 +1,46 @@
 return {
   {
+    'sainnhe/everforest',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.everforest_enable_italic = 1
+      vim.g.everforest_enable_bold = 1
+      vim.g.everforest_better_performance = 1
+
+      local grpid = vim.api.nvim_create_augroup('custom_highlights_everforest', {})
+      vim.api.nvim_create_autocmd('ColorScheme', {
+        group = grpid,
+        pattern = 'everforest',
+        callback = function()
+          local function hl_lnk(src, trgt)
+            vim.api.nvim_set_hl(0, src, { link = trgt })
+          end
+
+          local hl = vim.api.nvim_set_hl
+
+          hl(0, 'MyComment', { link = 'Comment', italic = true })
+          hl(0, 'MyKeyword', { link = 'Keyword', bold = true, italic = true })
+          hl(0, 'MyFunction', { link = 'Function', italic = true })
+          hl(0, 'MyDelimiter', { link = 'Delimiter', italic = true })
+          hl(0, 'MyOperator', { link = 'Operator', italic = true })
+
+          hl(0, '@comment', { link = 'MyComment' })
+          hl(0, '@keyword', { link = 'MyKeyword' })
+          hl(0, '@function', { link = 'MyFunction' })
+          hl(0, '@punctuation.bracket', { link = 'MyDelimiter' })
+          hl(0, '@operator', { link = 'MyOperator' })
+          hl(0, '@parameter', { link = 'MyFunction' })
+
+          hl_lnk('@constant.php', 'Purple')
+          hl_lnk('@punctuation.bracket.php', 'Blue')
+        end,
+      })
+
+      vim.cmd.colorscheme 'everforest'
+    end,
+  },
+  {
     'sainnhe/gruvbox-material',
     lazy = false,
     priority = 1000,
@@ -77,7 +118,7 @@ return {
           virtual_text = 'NONE',
         },
       }
-      vim.cmd.colorscheme 'vaporwave'
+      -- vim.cmd.colorscheme 'vaporwave'
     end,
   },
 }
