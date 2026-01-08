@@ -3,6 +3,8 @@ local ui = require 'util.ui'
 
 local map = vim.keymap.set
 
+map('n', '<C-a>', ':normal ggVG<CR>', opts)
+
 map('n', '<C-c>', '"+y', opts)
 map('v', '<C-c>', '"+y', opts)
 

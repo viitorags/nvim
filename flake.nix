@@ -52,6 +52,7 @@
               nvim-treesitter-textobjects
               gruvbox-material
               everforest
+              codesnap-nvim
             ];
           };
 
