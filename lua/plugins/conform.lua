@@ -25,6 +25,7 @@ return {
           ejs = { 'prettier' },
           go = { 'go fmt' },
           php = { 'php-cs-fixer' },
+          qml = { 'qmlfmt' },
         },
       }
 
