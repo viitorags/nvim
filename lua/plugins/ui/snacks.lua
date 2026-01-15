@@ -71,8 +71,7 @@ return {
       sections = {
         { section = 'header' },
         -- { section = 'terminal', cmd = 'cowsay -t "JOYBOY"', hl = 'header', padding = 1, indent = 4 },
-        { title = 'Bookmarks', padding = 0 },
-        { section = 'keys', padding = 1 },
+        { section = 'keys', padding = 2, gap = 0 },
         { section = 'startup' },
       },
     },
