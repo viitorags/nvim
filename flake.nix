@@ -42,6 +42,7 @@
             general = [
               stdenv.cc.cc
               typescript
+              codesnap
             ];
           };
 
@@ -51,8 +52,6 @@
               nvim-treesitter.withAllGrammars
               nvim-treesitter-textobjects
               gruvbox-material
-              everforest
-              codesnap-nvim
             ];
           };
 
