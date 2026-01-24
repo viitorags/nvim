@@ -1,5 +1,42 @@
 return {
   {
+    'rebelot/kanagawa.nvim',
+    priority = 1000,
+    config = function()
+      require('kanagawa').setup {
+        compile = false,
+        undercurl = true,
+        commentStyle = { italic = true },
+        functionStyle = { italic = true },
+        keywordStyle = { italic = true },
+        statementStyle = { bold = true },
+        typeStyle = {},
+        transparent = false,
+        dimInactive = false,
+        terminalColors = true,
+        colors = {
+          palette = {},
+          theme = {
+            wave = {
+              ui = {
+                bg_gutter = 'none',
+              },
+            },
+          },
+        },
+        overrides = function()
+          return {}
+        end,
+        theme = 'wave',
+        background = {
+          dark = 'wave',
+          light = 'lotus',
+        },
+      }
+      vim.cmd.colorscheme 'kanagawa'
+    end,
+  },
+  {
     'sainnhe/gruvbox-material',
     lazy = false,
     priority = 1000,
@@ -43,7 +80,7 @@ return {
         end,
       })
 
-      vim.cmd.colorscheme 'gruvbox-material'
+      -- vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
   {
