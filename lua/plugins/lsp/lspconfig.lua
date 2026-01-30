@@ -108,7 +108,28 @@ return {
           },
         },
 
-        nixd = { capabilities = capabilities },
+        nixd = {
+          capabilities = capabilities,
+          on_attach = function(client)
+            client.server_capabilities.codeActionProvider = nil
+            client.server_capabilities.definitionProvider = false
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentSymbolProvider = false
+            client.server_capabilities.documentHighlightProvider = false
+            client.server_capabilities.hoverProvider = false
+            client.server_capabilities.inlayHintProvider = false
+            client.server_capabilities.referencesProvider = false
+            client.server_capabilities.renameProvider = false
+          end,
+        },
+
+        ['nil'] = {
+          on_attach = function(client)
+            client.server_capabilities.completionProvider = nil
+          end,
+          cmd = { vim.fn.exepath 'nil' },
+          capabilities = capabilities,
+        },
 
         lua_ls = {
           filetypes = { 'lua' },

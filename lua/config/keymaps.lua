@@ -14,8 +14,8 @@ map('i', '<C-s>', '<C-o>:w<CR>', opts)
 map('n', '<C-f>', ':%s/foo/bar', opts)
 map('v', '<C-f>', ':s/foo/bar', opts)
 
-map('n', '<leader>a', ':CodeCompanionChat Toggle<CR>', opts)
-map('n', '<leader>ca', ':CodeCompanionActions<CR>', opts)
+map('n', '<leader>a', ':AvanteToggle<CR>', opts)
+-- map('n', '<leader>ca', ':CodeCompanionActions<CR>', opts)
 map('n', '<leader>t', ':OverseerRun<CR>', opts)
 map('n', '<leader>T', ':OverseerToggle<CR>', opts)
 
