@@ -129,6 +129,7 @@ return {
           end,
           cmd = { vim.fn.exepath 'nil' },
           capabilities = capabilities,
+          filetypes = { 'nix' },
         },
 
         lua_ls = {
