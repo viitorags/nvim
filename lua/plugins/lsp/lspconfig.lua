@@ -34,7 +34,7 @@ return {
 
         vtsls = {
           cmd = { 'vtsls', '--stdio' },
-          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
           root_markers = {
             'tsconfig.json',
             'package.json',
@@ -54,7 +54,6 @@ return {
                   watchFile = 'useFsEvents',
                   watchDirectory = 'useFsEvents',
                 },
-                globalPlugins = { vue_plugin },
               },
             },
           },
@@ -63,7 +62,36 @@ return {
         vue_ls = {
           cmd = { 'vue-language-server', '--stdio' },
           filetypes = { 'vue' },
+          init_options = {
+            typescript = {
+              tsdk = require('lspconfig.util').get_node_modules_folder('typescript'),
+              globalPlugins = { vue_plugin },
+            },
+            languageFeatures = {
+              completion = true,
+              definition = true,
+              diagnostics = true,
+              hover = true,
+              inlayHints = true,
+              references = true,
+              rename = true,
+              documentHighlight = true,
+              documentLink = true,
+              documentColor = true,
+              codeAction = true,
+              foldingRange = true,
+            },
+          },
           settings = {
+            vue = {
+              updateImportsOnFileMove = {
+                enabled = true,
+              },
+              autoInsert = {
+                dotValue = true,
+                bracketSpacing = true,
+              },
+            },
             typescript = {
               globalPlugins = { vue_plugin },
             },
