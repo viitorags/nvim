@@ -114,7 +114,7 @@ return {
           virtual_text = 'NONE',
         },
       }
-      -- vim.cmd.colorscheme 'vaporwave'
+      vim.cmd.colorscheme 'vaporwave'
     end,
   },
 }
