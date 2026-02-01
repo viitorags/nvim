@@ -60,6 +60,16 @@ return {
           },
         },
 
+        vue_ls = {
+          cmd = { 'vue-language-server', '--stdio' },
+          filetypes = { 'vue' },
+          settings = {
+            typescript = {
+              globalPlugins = { vue_plugin },
+            },
+          },
+        },
+
         intelephense = { capabilities = capabilities },
 
         gopls = {
