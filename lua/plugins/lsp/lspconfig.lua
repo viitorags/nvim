@@ -62,6 +62,7 @@ return {
         vue_ls = {
           cmd = { 'vue-language-server', '--stdio' },
           filetypes = { 'vue' },
+          capabilities = capabilities,
           init_options = {
             typescript = {
               globalPlugins = { vue_plugin },
@@ -95,12 +96,6 @@ return {
               globalPlugins = { vue_plugin },
             },
           },
-          on_attach = function(client)
-            -- Register vtsls as the TypeScript client for Vue
-            if vim.lsp.get_client_by_id(vim.lsp.get_active_clients({ bufnr = 0 })[1].id) then
-              client.server_capabilities.definitionProvider = true
-            end
-          end,
         },
 
         intelephense = { capabilities = capabilities },
