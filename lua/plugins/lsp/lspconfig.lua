@@ -34,7 +34,7 @@ return {
 
         vtsls = {
           cmd = { 'vtsls', '--stdio' },
-          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
+          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
           root_markers = {
             'tsconfig.json',
             'package.json',
@@ -54,6 +54,15 @@ return {
                   watchFile = 'useFsEvents',
                   watchDirectory = 'useFsEvents',
                 },
+              },
+            },
+          },
+          init_options = {
+            plugins = {
+              {
+                name = '@vue/typescript-plugin',
+                location = vue_language_server_path,
+                languages = { 'vue' },
               },
             },
           },
