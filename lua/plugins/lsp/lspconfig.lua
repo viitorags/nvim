@@ -73,6 +73,15 @@ return {
           filetypes = { 'vue' },
           capabilities = capabilities,
           init_options = {
+            typescript = {
+              globalPlugins = {
+                {
+                  name = '@vue/typescript-plugin',
+                  location = vue_language_server_path,
+                  languages = { 'vue' },
+                },
+              },
+            },
             languageFeatures = {
               completion = true,
               definition = true,
@@ -96,6 +105,15 @@ return {
               autoInsert = {
                 dotValue = true,
                 bracketSpacing = true,
+              },
+            },
+            typescript = {
+              globalPlugins = {
+                {
+                  name = '@vue/typescript-plugin',
+                  location = vue_language_server_path,
+                  languages = { 'vue' },
+                },
               },
             },
           },
