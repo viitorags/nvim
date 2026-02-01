@@ -64,7 +64,6 @@ return {
           filetypes = { 'vue' },
           init_options = {
             typescript = {
-              tsdk = require('lspconfig.util').get_node_modules_folder('typescript'),
               globalPlugins = { vue_plugin },
             },
             languageFeatures = {
