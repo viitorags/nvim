@@ -64,10 +64,6 @@ return {
           filetypes = { 'vue' },
           capabilities = capabilities,
           init_options = {
-            typescript = {
-              serverPath = vim.fn.exepath 'vtsls' or vim.fn.exepath 'vue-language-server',
-              globalPlugins = { vue_plugin },
-            },
             languageFeatures = {
               completion = true,
               definition = true,
@@ -92,9 +88,6 @@ return {
                 dotValue = true,
                 bracketSpacing = true,
               },
-            },
-            typescript = {
-              globalPlugins = { vue_plugin },
             },
           },
         },
