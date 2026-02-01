@@ -62,9 +62,9 @@ return {
 
         sources = {
           providers = {
-            snippets = {
-              opts = {},
-            },
+            -- snippets = {
+            --   opts = {},
+            -- },
           },
         },
       }

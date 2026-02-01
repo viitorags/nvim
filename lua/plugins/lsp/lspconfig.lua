@@ -44,25 +44,7 @@ return {
           settings = {
             vtsls = {
               tsserver = {
-                maxTsServerMemory = 1024,
-                experimental = {
-                  completion = {
-                    enableServerSideFuzzyMatch = false,
-                  },
-                },
-                watchOptions = {
-                  watchFile = 'useFsEvents',
-                  watchDirectory = 'useFsEvents',
-                },
-              },
-            },
-          },
-          init_options = {
-            plugins = {
-              {
-                name = '@vue/typescript-plugin',
-                location = vue_language_server_path,
-                languages = { 'vue' },
+                globalPlugins = { vue_plugin },
               },
             },
           },
@@ -71,50 +53,9 @@ return {
         vue_ls = {
           cmd = { 'vue-language-server', '--stdio' },
           filetypes = { 'vue' },
-          capabilities = capabilities,
-          init_options = {
-            typescript = {
-              globalPlugins = {
-                {
-                  name = '@vue/typescript-plugin',
-                  location = vue_language_server_path,
-                  languages = { 'vue' },
-                },
-              },
-            },
-            languageFeatures = {
-              completion = true,
-              definition = true,
-              diagnostics = true,
-              hover = true,
-              inlayHints = true,
-              references = true,
-              rename = true,
-              documentHighlight = true,
-              documentLink = true,
-              documentColor = true,
-              codeAction = true,
-              foldingRange = true,
-            },
-          },
           settings = {
-            vue = {
-              updateImportsOnFileMove = {
-                enabled = true,
-              },
-              autoInsert = {
-                dotValue = true,
-                bracketSpacing = true,
-              },
-            },
             typescript = {
-              globalPlugins = {
-                {
-                  name = '@vue/typescript-plugin',
-                  location = vue_language_server_path,
-                  languages = { 'vue' },
-                },
-              },
+              globalPlugins = { vue_plugin },
             },
           },
         },
