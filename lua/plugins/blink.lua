@@ -63,13 +63,7 @@ return {
         sources = {
           default = { 'lsp', 'snippets' },
           providers = {
-            lsp = {
-              name = 'LSP',
-              enabled = true,
-              module = 'blink.cmp.sources.lsp',
-              kind = 'LSP',
-              score_offset = 100,
-            },
+            lsp = {},
             snippets = {
               opts = {},
             },
