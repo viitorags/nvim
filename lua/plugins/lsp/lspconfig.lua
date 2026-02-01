@@ -65,6 +65,7 @@ return {
           capabilities = capabilities,
           init_options = {
             typescript = {
+              serverPath = vim.fn.exepath 'vtsls' or vim.fn.exepath 'vue-language-server',
               globalPlugins = { vue_plugin },
             },
             languageFeatures = {
