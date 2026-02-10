@@ -7,11 +7,11 @@ return {
 
       lint.linters_by_ft = {
         javascript = { 'eslint' },
-        -- typescript = { 'eslint' },
-        sh = { 'shellcheck' },
-        bash = { 'shellcheck' },
+        typescript = { 'eslint' },
+        -- sh = { 'shellcheck' },
+        -- bash = { 'shellcheck' },
         -- dockerfile = { 'hadolint' },
-        go = { 'golangcilint' },
+        -- go = { 'golangcilint' },
         php = { 'phpcs' },
       }
 
