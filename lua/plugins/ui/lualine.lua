@@ -109,6 +109,7 @@ return {
             {
               'diagnostics',
               symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+              separator = { right = '' },
             },
           },
           lualine_z = {

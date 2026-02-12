@@ -1,5 +1,25 @@
 return {
   {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+    config = function()
+      local catppuccin = require 'catppuccin'
+      catppuccin.setup {
+        flavour = 'mocha',
+        styles = {
+          comments = { 'italic', 'bold' },
+          keywords = { 'bold', 'italic' },
+          functions = { 'italic' },
+          parameters = { 'italic' },
+          conditionals = { 'italic' },
+        },
+      }
+
+      vim.cmd.colorscheme 'catppuccin'
+    end,
+  },
+  {
     'rebelot/kanagawa.nvim',
     priority = 1000,
     config = function()
@@ -114,7 +134,7 @@ return {
           virtual_text = 'NONE',
         },
       }
-      vim.cmd.colorscheme 'vaporwave'
+      -- vim.cmd.colorscheme 'vaporwave'
     end,
   },
 }
