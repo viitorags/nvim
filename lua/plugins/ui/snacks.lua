@@ -9,15 +9,23 @@ return {
     dashboard = {
       enabled = true,
       preset = {
+        header = [[
+     ██╗ ██████╗ ██╗   ██╗██████╗  ██████╗ ██╗   ██╗
+     ██║██╔═══██╗╚██╗ ██╔╝██╔══██╗██╔═══██╗╚██╗ ██╔╝
+     ██║██║   ██║ ╚████╔╝ ██████╔╝██║   ██║ ╚████╔╝ 
+██   ██║██║   ██║  ╚██╔╝  ██╔══██╗██║   ██║  ╚██╔╝  
+╚█████╔╝╚██████╔╝   ██║   ██████╔╝╚██████╔╝   ██║   
+ ╚════╝  ╚═════╝    ╚═╝   ╚═════╝  ╚═════╝    ╚═╝   
+        ]],
         keys = {
           { icon = '󰈞 ', key = 'f', desc = 'Find File', action = ':lua Snacks.picker.smart()' },
-          { icon = ' ', key = 'e', desc = 'New File', action = ':ene | startinsert' },
-          {
-            icon = ' ',
-            key = 'g',
-            desc = 'Find Text',
-            action = ":lua Snacks.dashboard.pick('live_grep')",
-          },
+          -- { icon = ' ', key = 'e', desc = 'New File', action = ':ene | startinsert' },
+          -- {
+          --   icon = ' ',
+          --   key = 'g',
+          --   desc = 'Find Text',
+          --   action = ":lua Snacks.dashboard.pick('live_grep')",
+          -- },
           {
             function()
               if require('nixCatsUtils').isNixCats == true then
