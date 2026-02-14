@@ -14,114 +14,99 @@ return {
         if not signs then
           return ''
         end
-
-        local icons = {
-          added = ' ',
-          changed = ' ',
-          removed = ' ',
-        }
-
         local parts = {}
-        for name, icon in pairs(icons) do
-          local count = tonumber(signs[name])
-          if count and count > 0 then
-            table.insert(parts, icon .. count)
-          end
+        if signs.added and signs.added > 0 then
+          table.insert(parts, '%#GitSignsAdd#+' .. signs.added)
         end
-
-        if #parts > 0 then
-          return table.concat(parts, ' ')
+        if signs.changed and signs.changed > 0 then
+          table.insert(parts, '%#GitSignsChange#~' .. signs.changed)
         end
+        if signs.removed and signs.removed > 0 then
+          table.insert(parts, '%#GitSignsDelete#-' .. signs.removed)
+        end
+        return #parts > 0 and ('[MOD:' .. table.concat(parts, ' ') .. '%*]') or ''
+      end
 
-        return ''
+      local function lsp_status()
+        local clients = vim.lsp.get_active_clients { bufnr = 0 }
+        if #clients == 0 then
+          return '[SYSTEM:OFFLINE]'
+        end
+        return '[SYS:' .. string.upper(clients[1].name) .. ']'
       end
 
       lualine.setup {
         options = {
+          theme = 'auto',
           icons_enabled = true,
-          component_separators = '',
-          section_separators = { left = '', right = '' },
+          -- Separadores afiados
+          component_separators = { left = '', right = '' },
+          section_separators = { left = '', right = '' },
           globalstatus = true,
-          always_divide_middle = true,
-          always_show_tabline = true,
-          refresh = {
-            statusline = 100,
-            tabline = 100,
-            winbar = 100,
-          },
+          refresh = { statusline = 100, tabline = 100, winbar = 100 },
         },
         sections = {
           lualine_a = {
             {
               'mode',
-              icon = ' ',
-              separator = { left = '', right = '' },
-              padding = {
-                left = 1,
-                right = 1,
-              },
+              fmt = function(str)
+                return '󰣚 ' .. str:upper()
+              end,
+              separator = { right = '' },
             },
           },
           lualine_b = {
-            -- { 'branch', icon = ' branch:' },
-            -- { 'diff' },
-            { 'lsp_status', icon = ' LSP:' },
+            { 'branch', icon = '' },
+            { lsp_status, color = { gui = 'bold' } },
           },
-          lualine_c = { --[[{ 'lsp_status', icon = '  LSP:' }]]
+          lualine_c = {
+            {
+              function()
+                return 'PATH:'
+              end,
+              color = { fg = '#585b70' },
+              padding = { left = 1, right = 0 },
+            },
+            { 'filename', path = 1, symbols = { modified = '󰶐', readonly = '' } },
           },
           lualine_x = {
-            --[[{
-              'encoding',
-              icon = ' ',
-            },]]
+            { 'diagnostics', symbols = { error = ' ', warn = ' ', info = ' ', hint = '󰌵 ' } },
           },
           lualine_y = {
-            {
-              'encoding',
-              icon = '',
-            },
+            { 'encoding', fmt = string.upper },
             { 'progress', icon = '' },
           },
           lualine_z = {
-            {
-              'location',
-              icon = '',
-              separator = { left = '', right = '' },
-              left_padding = 2,
-            },
+            { 'location', icon = '', separator = { left = '' } },
           },
-        },
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = {
-            { 'filename', path = 0, symbols = { modified = ' [+]', readonly = ' [RO]' } },
-          },
-          lualine_x = {},
-          lualine_y = {},
-          lualine_z = { 'location' },
         },
         tabline = {
           lualine_a = {
-            { 'filename', path = 0, symbols = { modified = ' [+]', readonly = ' [RO]' }, separator = { left = '', right = '' } },
-          },
-          lualine_y = {
             {
-              'diagnostics',
-              symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
-              separator = { right = '' },
+              'filename',
+              path = 0,
+              fmt = function(name)
+                return '󰈚 [CORE_FS:' .. name:upper() .. ']'
+              end,
+              separator = { right = '' },
             },
           },
+          lualine_x = {
+            { gitsigns_diff, padding = { right = 1 } },
+          },
           lualine_z = {
-            { gitsigns_diff },
             {
               'branch',
-              icon = ' branch:',
-              separator = { left = '', right = '' },
+              icon = '',
+              fmt = function(str)
+                return 'NET://' .. str:upper()
+              end,
+              separator = { left = '' },
+              color = { gui = 'bold' },
             },
           },
         },
-        extensions = { 'neo-tree', 'quickfix' },
+        extensions = { 'neo-tree', 'quickfix', 'fugitive' },
       }
     end,
   },
