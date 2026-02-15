@@ -26,6 +26,7 @@ return {
           go = { 'go fmt' },
           php = { 'php-cs-fixer' },
           qml = { 'qmlfmt' },
+          rust = { 'rustfmt' },
         },
       }
 
