@@ -79,6 +79,8 @@ return {
           },
         },
 
+        rust_analyzer = { capabilities = capabilities },
+
         tailwindcss = {
           filetypes = {
             'html',
