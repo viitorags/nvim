@@ -79,7 +79,19 @@ return {
           },
         },
 
-        rust_analyzer = { capabilities = capabilities },
+        rust_analyzer = {
+          settings = {
+            ['rust-analyzer'] = {
+              cargo = {
+                allFeatures = true,
+              },
+              checkOnSave = {
+                command = 'clippy',
+              },
+            },
+          },
+          capabilities = capabilities,
+        },
 
         tailwindcss = {
           filetypes = {

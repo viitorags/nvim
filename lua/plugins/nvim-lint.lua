@@ -8,7 +8,6 @@ return {
       lint.linters_by_ft = {
         javascript = { 'eslint' },
         typescript = { 'eslint' },
-        rust = { 'clippy' },
         -- sh = { 'shellcheck' },
         -- bash = { 'shellcheck' },
         -- dockerfile = { 'hadolint' },
