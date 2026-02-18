@@ -28,11 +28,18 @@ return {
       end
 
       local function lsp_status()
-        local clients = vim.lsp.get_active_clients { bufnr = 0 }
+        local clients = vim.lsp.get_clients { bufnr = 0 }
+
         if #clients == 0 then
           return '[SYSTEM:OFFLINE]'
         end
-        return '[SYS:' .. string.upper(clients[1].name) .. ']'
+
+        local names = {}
+        for _, client in ipairs(clients) do
+          table.insert(names, string.upper(client.name))
+        end
+
+        return '[SYS:' .. table.concat(names, ',') .. ']'
       end
 
       lualine.setup {
