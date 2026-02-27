@@ -16,7 +16,7 @@ return {
         },
       }
 
-      vim.cmd.colorscheme 'catppuccin'
+      -- vim.cmd.colorscheme 'catppuccin'
     end,
   },
   {
@@ -134,7 +134,7 @@ return {
           virtual_text = 'NONE',
         },
       }
-      -- vim.cmd.colorscheme 'vaporwave'
+      vim.cmd.colorscheme 'vaporwave'
     end,
   },
 }
