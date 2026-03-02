@@ -1,37 +1,37 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    lazy = false,
     event = { 'BufReadPre', 'BufNewFile' },
     build = require('nixCatsUtils').lazyAdd ':TSUpdate',
-    version = '*',
     dependencies = {
       'tree-sitter/tree-sitter-embedded-template',
     },
     config = function()
-      local configs = require 'nvim-treesitter.configs'
-      configs.setup {
+      local treesitter = require 'nvim-treesitter'
+      treesitter.install {
+        'c',
+        'lua',
+        'css',
+        'html',
+        'cpp',
+        'javascript',
+        'rust',
+        'java',
+        'sql',
+        'nix',
+        'markdown',
+        'json',
+        'yaml',
+        'python',
+        'go',
+        'php',
+        'vue',
+      }
+      treesitter.setup {
         sync_install = false,
         ignore_install = {},
         auto_install = require('nixCatsUtils').lazyAdd(true, false),
-        ensure_installed = require('nixCatsUtils').lazyAdd {
-          'c',
-          'lua',
-          'css',
-          'html',
-          'cpp',
-          'javascript',
-          'rust',
-          'java',
-          'sql',
-          'nix',
-          'markdown',
-          'json',
-          'yaml',
-          'python',
-          'go',
-          'php',
-          'vue',
-        },
 
         highlight = {
           enable = true,
@@ -51,6 +51,22 @@ return {
         },
         modules = {},
       }
+      vim.api.nvim_create_autocmd('FileType', {
+        callback = function(args)
+          local buf, filetype = args.buf, args.match
+
+          local language = vim.treesitter.language.get_lang(filetype)
+          if not language then
+            return
+          end
+
+          if not vim.treesitter.language.add(language) then
+            return
+          end
+          vim.treesitter.start(buf, language)
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
     end,
   },
 }

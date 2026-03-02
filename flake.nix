@@ -43,6 +43,7 @@
               stdenv.cc.cc
               typescript
               codesnap
+              tree-sitter
             ];
           };
 
@@ -136,7 +137,7 @@
             name = defaultPackageName;
             packages = [ defaultPackage ];
             inputsFrom = [ ];
-            shellHook = '''';
+            shellHook = "";
           };
         };
 
