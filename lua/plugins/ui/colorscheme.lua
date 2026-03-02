@@ -1,62 +1,5 @@
 return {
   {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    priority = 1000,
-    config = function()
-      local catppuccin = require 'catppuccin'
-      catppuccin.setup {
-        flavour = 'mocha',
-        styles = {
-          comments = { 'italic', 'bold' },
-          keywords = { 'bold', 'italic' },
-          functions = { 'italic' },
-          parameters = { 'italic' },
-          conditionals = { 'italic' },
-        },
-      }
-
-      -- vim.cmd.colorscheme 'catppuccin'
-    end,
-  },
-  {
-    'rebelot/kanagawa.nvim',
-    priority = 1000,
-    config = function()
-      require('kanagawa').setup {
-        compile = false,
-        undercurl = true,
-        commentStyle = { italic = true },
-        functionStyle = { italic = true },
-        keywordStyle = { italic = true },
-        statementStyle = { bold = true },
-        typeStyle = {},
-        transparent = false,
-        dimInactive = false,
-        terminalColors = true,
-        colors = {
-          palette = {},
-          theme = {
-            wave = {
-              ui = {
-                bg_gutter = 'none',
-              },
-            },
-          },
-        },
-        overrides = function()
-          return {}
-        end,
-        theme = 'wave',
-        background = {
-          dark = 'wave',
-          light = 'lotus',
-        },
-      }
-      -- vim.cmd.colorscheme 'kanagawa'
-    end,
-  },
-  {
     'sainnhe/gruvbox-material',
     lazy = false,
     priority = 1000,
@@ -66,7 +9,7 @@ return {
       end
       vim.g.gruvbox_material_enable_italic = 1
       vim.g.gruvbox_material_enable_bold = 1
-      vim.g.gruvbox_material_foreground = 'original'
+      vim.g.gruvbox_material_foreground = 'mix'
       vim.g.gruvbox_material_better_performance = 1
       vim.g.gruvbox_material_float_style = 'bright'
       vim.g.gruvbox_material_ui_contrast = 'high'
@@ -100,41 +43,7 @@ return {
         end,
       })
 
-      -- vim.cmd.colorscheme 'gruvbox-material'
-    end,
-  },
-  {
-    'olimorris/onedarkpro.nvim',
-    priority = 1000,
-    config = function()
-      require('onedarkpro').setup {
-        options = {
-          cursorline = true,
-          highlight_inactive_windows = false,
-        },
-        highlights = {
-          LineNr = { bg = 'NONE' },
-          Comment = { italic = true },
-          Directory = { bold = true },
-          ErrorMsg = { italic = true, bold = true },
-        },
-        styles = {
-          types = 'NONE',
-          methods = 'NONE',
-          numbers = 'NONE',
-          strings = 'NONE',
-          comments = 'italic',
-          keywords = 'bold,italic',
-          constants = 'NONE',
-          functions = 'italic',
-          operators = 'NONE',
-          variables = 'NONE',
-          parameters = 'italic',
-          conditionals = 'italic',
-          virtual_text = 'NONE',
-        },
-      }
-      vim.cmd.colorscheme 'vaporwave'
+      vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
 }
