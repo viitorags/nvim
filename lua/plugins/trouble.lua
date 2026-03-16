@@ -5,22 +5,22 @@ return {
   keys = {
     {
       '<leader>xx',
-      '<cmd>Trouble diagnostics toggle<cr>',
+      '<cmd>Trouble diagnostics toggle win.type=float focus=true<cr>',
       desc = 'Diagnostics (Trouble)',
     },
     {
       '<leader>xX',
-      '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
+      '<cmd>Trouble diagnostics toggle filter.buf=0 win.type=float focus=true<cr>',
       desc = 'Buffer Diagnostics (Trouble)',
     },
     {
       '<leader>cs',
-      '<cmd>Trouble symbols toggle focus=false<cr>',
+      '<cmd>Trouble symbols toggle focus=false win.position=left<cr>',
       desc = 'Symbols (Trouble)',
     },
     {
       '<leader>cl',
-      '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
+      '<cmd>Trouble lsp toggle focus=false win.position=left<cr>',
       desc = 'LSP Definitions / references / ... (Trouble)',
     },
     {

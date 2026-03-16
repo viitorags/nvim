@@ -1,4 +1,8 @@
 return {
-  'direnv/direnv.vim',
-  config = function() end,
+  'NotAShelf/direnv.nvim',
+  config = function()
+    require('direnv').setup {
+      autoload_direnv = true,
+    }
+  end,
 }

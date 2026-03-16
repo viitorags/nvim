@@ -19,6 +19,10 @@ map('n', '<leader>a', ':AvanteToggle<CR>', opts)
 map('n', '<leader>t', ':OverseerRun<CR>', opts)
 map('n', '<leader>T', ':OverseerToggle<CR>', opts)
 
+map('n', '<leader>ca', function()
+  require('tiny-code-action').code_action()
+end, opts)
+
 for i = 1, 9 do
   map('n', '<A-' .. i .. '>', function()
     local buffers = vim.fn.getbufinfo { buflisted = 1 }
