@@ -185,7 +185,22 @@ return {
 
           pyright = { capabilities = capabilities },
 
-          qmlls = { capabilities = capabilities },
+          qmlls = {
+            capabilities = capabilities,
+            handlers = {
+              ['textDocument/publishDiagnostics'] = function(err, method, params, client_id)
+                local filtered_diagnostics = {}
+                for _, diagnostic in ipairs(method.diagnostics) do
+                  if diagnostic.severity ~= vim.diagnostic.severity.WARN then
+                    table.insert(filtered_diagnostics, diagnostic)
+                  end
+                end
+
+                method.diagnostics = filtered_diagnostics
+                vim.lsp.handlers['textDocument/publishDiagnostics'](err, method, params, client_id)
+              end,
+            },
+          },
 
           jdtls = { capabilities = capabilities },
         }
