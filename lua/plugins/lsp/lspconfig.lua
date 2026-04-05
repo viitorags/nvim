@@ -3,6 +3,23 @@ return {
     'neovim/nvim-lspconfig',
     config = function()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
+      capabilities.textDocument.completion.completionItem = {
+        documentationFormat = { 'markdown', 'plaintext' },
+        snippetSupport = true,
+        preselectSupport = true,
+        insertReplaceSupport = true,
+        labelDetailsSupport = true,
+        deprecatedSupport = true,
+        commitCharactersSupport = true,
+        tagSupport = { valueSet = { 1 } },
+        resolveSupport = {
+          properties = {
+            'documentation',
+            'detail',
+            'additionalTextEdits',
+          },
+        },
+      }
       local function get_vue_plugin_path()
         if require('nixCatsUtils').isNixCats then
           local exe = vim.fn.exepath 'vue-language-server'

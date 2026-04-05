@@ -11,7 +11,7 @@ return {
     },
     config = function()
       require('luasnip.loaders.from_vscode').lazy_load()
-      vim.api.nvim_set_hl(0, 'CmpMenu', { bg = 'none' })
+      -- vim.api.nvim_set_hl(0, 'CmpMenu', { bg = 'none' })
       local blink = require 'blink-cmp'
       blink.setup {
         keymap = {
@@ -54,6 +54,16 @@ return {
               winhighlight = 'Normal:BlinkMenu,FloatBorder:BlinkMenu,CursorLine:Visual,Search:None',
             },
           },
+          trigger = {
+            show_on_blocked_trigger_characters = function()
+              local chars = { "'", '"', '(', '{', '[' }
+              local target_fts = { 'html', 'php', 'vue', 'reactjs', 'javascriptreact', 'typescriptreact' }
+              if vim.tbl_contains(target_fts, vim.bo.filetype) then
+                table.insert(chars, '>')
+              end
+              return chars
+            end,
+          },
         },
 
         snippets = {
@@ -62,9 +72,13 @@ return {
 
         sources = {
           providers = {
-            -- snippets = {
-            --   opts = {},
-            -- },
+            lsp = {
+              transform_items = function(_, items)
+                return vim.tbl_filter(function(item)
+                  return item.label ~= '{}'
+                end, items)
+              end,
+            },
           },
         },
       }
